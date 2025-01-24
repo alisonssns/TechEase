@@ -32,6 +32,20 @@ app.get('/api/produtos', (req, res) => {
   });
 });
 
+app.post("/api/register", (req, res) => {
+  const { nome, email, senha } = req.body;
+
+  const query = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+  db.query(query, [nome, email, senha], (err, result) => {
+    if (err) {
+      res.status(500).send("Erro ao cadastrar o usuário");
+      return;
+    }
+    res.status(200).send("Usuário cadastrado com sucesso");
+  });
+});
+
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
