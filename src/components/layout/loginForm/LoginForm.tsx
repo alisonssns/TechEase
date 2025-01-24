@@ -13,16 +13,24 @@ function LoginForm({ name, submit }: { name: string, submit: string }) {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        console.log(nome);
-        console.log(email);
-        console.log(senha);
+        axios
+            .post("http://localhost:5000/api/register", { nome, email, senha })
+            .then(() => {
+                alert("Usuário cadastrado com sucesso!");
+                setNome("");
+                setEmail("");
+                setSenha("");
+            })
+            .catch((error) => {
+                alert(`Erro ao cadastrar o usuário. ${error}`);
+            });
     };
 
 
     const fields = [
-        { type: 'text', name: 'nome', placeholder: 'Nome', value: nome,},
-        { type: 'email', name: 'email', placeholder: 'E-mail', value: email},
-        { type: 'password', name: 'senha', placeholder: 'Senha', value: senha}
+        { type: 'text', name: 'nome', placeholder: 'Nome', value: nome, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setNome(e.target.value) },
+        { type: 'email', name: 'email', placeholder: 'E-mail', value: email, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value) },
+        { type: 'password', name: 'senha', placeholder: 'Senha', value: senha, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setSenha(e.target.value) }
     ];
 
     return (
@@ -31,7 +39,7 @@ function LoginForm({ name, submit }: { name: string, submit: string }) {
                 <div className={styles.title}>{name}</div>
                 <div className={styles.holder}>
                     <div className={styles.inputs}>
-                        <InputsHolder fields={fields}/>
+                        <InputsHolder fields={fields} />
                     </div>
                     <input type="submit" value={submit} />
                 </div>

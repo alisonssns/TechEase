@@ -1,15 +1,29 @@
-import InputField from "./inputField";
+import styles from '../Forms.module.css';
 
-function InputsHolder({ fields }: { fields: { type: string; name: string; placeholder: string }[] }) {
+interface InputFieldProps {
+    type: string;
+    name: string;
+    placeholder: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function InputsHolder({ fields }: { fields: InputFieldProps[] }) {
     return (
         <>
-            {fields.map((field, index) => (
-                <InputField
-                    key={index}
-                    type={field.type}
-                    name={field.name}
-                    placeholder={field.placeholder}
-                />
+            {fields.map((field) => (
+                <div key={field.name}>
+                    <input
+                        type={field.type}
+                        id={field.name}
+                        name={field.name}
+                        value={field.value}
+                        placeholder={field.placeholder}
+                        onChange={field.onChange}
+                        required
+                    />
+                    <label htmlFor={field.name} className={styles.sobe}>{field.placeholder}</label>
+                </div>
             ))}
         </>
     );

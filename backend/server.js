@@ -5,6 +5,8 @@ const cors = require('cors');
 const app = express();
 const port = 5000;
 
+app.use(express.json()); 
+
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -20,11 +22,10 @@ db.connect((err) => {
   console.log('Conectado ao banco de dados MySQL');
 });
 
-
 app.use(cors());
 
 app.get('/api/produtos', (req, res) => {
-  db.query('SELECT * FROM produtos', (err, results) => {
+  db.query('SELECT nome FROM usuarios', (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -32,20 +33,18 @@ app.get('/api/produtos', (req, res) => {
   });
 });
 
-app.post("/api/register", (req, res) => {
+app.post("/api/register", async (req, res) => {
   const { nome, email, senha } = req.body;
 
   const query = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
   db.query(query, [nome, email, senha], (err, result) => {
     if (err) {
-      res.status(500).send("Erro ao cadastrar o usuário");
-      return;
+      console.error(err);
+      return res.status(500).send("Erro ao cadastrar o usuário");
     }
     res.status(200).send("Usuário cadastrado com sucesso");
   });
 });
-
-
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
