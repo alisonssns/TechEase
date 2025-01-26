@@ -1,11 +1,10 @@
-import LoginForm from "./components/layout/loginForm/LoginForm";
 import "./App.css";
 import "./components/pages/loginPage.module.css"
+import Produtos from "./components/layout/products/Produtos";
 
 function Sandbox() {
     return (
-        <LoginForm name="CADASTRO" submit="CADASTRAR">
-        </LoginForm>
+        <Produtos/>
     );
 }
 

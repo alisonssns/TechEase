@@ -1,0 +1,120 @@
+:root {
+    --color-background: #f9f9f9;
+    --color-text-primary: #333333;
+    --color-text-secondary: #555555;
+    --color-text-description: #666666;
+    --color-highlight: #007bff68;
+    --color-button: #007bff9b;
+    --color-button-hover: #0056b3;
+    --color-free-shipping: #28a745;
+
+    --border-radius: 20px;
+
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    --card-height: 350px;
+    --card-width: 250px;
+    --image-size: 150px;
+
+    --font-size-primary: 14px;
+    --font-size-secondary: 12px;
+    --font-size-button: 15px;
+
+    --padding-image: 2em;
+    --padding-button: 10px;
+}
+
+.productHolder {
+    display: grid;
+    width: 1280px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.productCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    height: var(--card-height);
+    width: var(--card-width);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imageContainer {
+    width: var(--image-size);
+    height: var(--image-size);
+    background-color: var(--color-highlight);
+    border-radius: var(--border-radius);
+    padding: 0 var(--padding-image);
+}
+
+.productImage {
+    width: 100%;
+    height: 100%;
+    border-radius: calc(var(--border-radius) / 2);
+    object-fit: cover;
+}
+
+.productInfo {
+    margin-top: 10px;
+    height: 100px;
+    width: 95%;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productNamePrice {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.productNamePrice * {
+    margin: 0;
+    font-size: var(--font-size-primary);
+    text-align: left;
+    color: var(--color-text-secondary);
+}
+
+.freeShipping {
+    color: var(--color-free-shipping);
+    font-weight: bold;
+}
+
+.productDescription {
+    width: 100%;
+    font-size: var(--font-size-secondary);
+    font-style: italic;
+    color: var(--color-text-description);
+    text-align: left;
+}
+
+.productDescription p {
+    margin: 0;
+}
+
+.addButton {
+    border-radius: var(--border-radius);
+    width: 90%;
+    font-size: var(--font-size-button);
+    padding: var(--padding-button);
+    color: #ffffff;
+    background-color: var(--color-button);
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.addButton:hover {
+    background-color: var(--color-button-hover);
+}
