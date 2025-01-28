@@ -12,22 +12,8 @@ footer {
     border-bottom: 1px solid #ffffff2b;
 }
 
-b {
-    color: #F95F62;
-}
-
 .column{
     max-width: 20%;
-}
-
-.column h2 {
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.column ul{
-    list-style: none;
-    padding: 0;
 }
 
 .column ul li,

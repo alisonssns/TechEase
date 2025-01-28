@@ -1,0 +1,56 @@
+header{
+    background-color: #1F2120;
+    width: 100%;
+    color: #fff;
+}
+
+section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin: 0 40px;
+    padding: 20px 0;
+}
+
+.links{
+    display: flex;
+    gap: 15px;
+    font-size: 1.3em;
+}
+
+.links *{
+    cursor: pointer;
+}
+
+.searchBarHolder{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: 0.5px solid #ffffffbd;
+    border-radius: 4px;
+    width: 50%;
+    height: 30px;
+}
+
+.searchBar{
+    width: 95%;
+    text-indent: 5px;
+}
+
+.searchButton{
+    height: 100%;
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 20px;
+}
+
+input{
+    background-color: transparent;
+    border: none;
+    height: 100%;
+}
