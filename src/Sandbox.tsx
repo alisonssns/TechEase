@@ -1,10 +1,9 @@
 import "./App.css";
-import Produtos from "./components/layout/products/Produtos";
-import LoginPage from "./components/pages/LoginPage";
+import Footer from './components/layout/footer/Footer'
 
 function Sandbox() {
     return (
-        <LoginPage/>
+        <Footer/>
     );
 }
 
