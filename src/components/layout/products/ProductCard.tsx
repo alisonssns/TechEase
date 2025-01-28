@@ -1,4 +1,4 @@
-import styles from './Product.module.css'
+import styles from '../../styles/Product.module.css'
 
 interface ProductCardProps {
     id: number;
@@ -12,7 +12,7 @@ function ProductCard({ id, nome, valor, desc_home, img }: ProductCardProps) {
     return (
         <div className={styles.productCard}>
             <figure className={styles.imageContainer}>
-                <img src={img} alt={nome} className={styles.productImage} />
+                <img src={`../../../../public/products/${img}`} alt={nome} className={styles.productImage} />
             </figure>
             <div className={styles.productInfo}>
                 <div className={styles.productNamePrice}>

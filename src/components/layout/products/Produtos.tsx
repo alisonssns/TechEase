@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Produto } from './Produto';
 import ProductCard from './ProductCard';
-import styles from './Product.module.css'
+import styles from '../../styles/Product.module.css'
 
 function Produtos() {
   const [Produtos, setProdutos] = useState<Produto[]>([]);
@@ -27,7 +27,7 @@ function Produtos() {
   return (
     <section className={styles.productHolder}>
       {Produtos.map(produto => (
-        <ProductCard id={produto.id_prod} nome={produto.nome_prod} valor={produto.valor_prod} desc_home={produto.desc_prod_home} img='https://shopinfo.vteximg.com.br/arquivos/ids/1677075-1000-1000/1.png?v=638714979723800000' />
+        <ProductCard id={produto.id_prod} nome={produto.nome_prod} valor={produto.valor_prod} desc_home={produto.desc_prod_home} img={produto.Img_prod} />
       ))}
     </section>
   );

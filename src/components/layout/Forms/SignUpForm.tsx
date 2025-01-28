@@ -1,11 +1,14 @@
-import styles from '../Forms.module.css';
+import styles from '../../styles/Forms.module.css';
 import InputsHolder from '../Inputs/InputsHolder';
-import OtherLogins from './OtherLogins';
 
 import React, { useState } from "react";
 import axios from "axios";
 
-function LoginForm({ name, submit }: { name: string, submit: string }) {
+interface LoginFormProps {
+    switch: () => void;
+}
+
+function LoginForm({ switch: handleSwitch }: LoginFormProps) {
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -35,16 +38,14 @@ function LoginForm({ name, submit }: { name: string, submit: string }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className={styles.login}>
-                <div className={styles.title}>{name}</div>
-                <div className={styles.holder}>
-                    <div className={styles.inputs}>
-                        <InputsHolder fields={fields} />
-                    </div>
-                    <input type="submit" value={submit} />
+            <div className={styles.title}>{"Crie sua Conta"}</div>
+            <div className={styles.holder}>
+                <div className={styles.inputs}>
+                    <InputsHolder fields={fields} />
                 </div>
+                <input type="submit" value={"Criar Conta"} />
             </div>
-            <OtherLogins />
+            <u onClick={handleSwitch}>Já tem uma conta?</u>
         </form>
     );
 }

@@ -1,5 +1,5 @@
 import { BsFacebook as Facebook, BsGoogle as Google } from "react-icons/bs"
-import styles from "./OtherLogins.module.css";
+import styles from "../../styles/OtherLogins.module.css";
 
 function OtherLogins() {
     return (

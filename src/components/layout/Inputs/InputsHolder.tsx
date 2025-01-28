@@ -1,4 +1,4 @@
-import styles from '../Forms.module.css';
+import styles from '../../styles/Forms.module.css';
 
 interface InputFieldProps {
     type: string;
