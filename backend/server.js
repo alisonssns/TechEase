@@ -35,6 +35,15 @@ app.get('/api/produtos', (req, res) => {
   });
 });
 
+app.get('/api/random', (req, res) => {
+  db.query('SELECT * FROM produtos ORDER BY RAND() LIMIT 5', (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(results);
+  });
+});
+
 app.post("/api/register", async (req, res) => {
   const { nome, email, senha } = req.body;
 
