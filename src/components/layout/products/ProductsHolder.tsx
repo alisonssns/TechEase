@@ -27,7 +27,7 @@ function Produtos() {
   return (
     <section className={styles.productHolder}>
       {Produtos.map(produto => (
-        <ProductCard id={produto.id_prod} nome={produto.nome_prod} valor={produto.valor_prod} desc_home={produto.desc_prod_home} img={produto.Img_prod} />
+        <ProductCard key={`Produto ${produto.id_prod}`} id={produto.id_prod} nome={produto.nome_prod} valor={produto.valor_prod} desc_home={produto.desc_prod_home} img={produto.Img_prod} />
       ))}
     </section>
   );

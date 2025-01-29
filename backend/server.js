@@ -27,7 +27,7 @@ db.connect((err) => {
 app.use(cors());
 
 app.get('/api/produtos', (req, res) => {
-  db.query('SELECT * FROM produtos', (err, results) => {
+  db.query('SELECT * FROM produtos LIMIT 19', (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }

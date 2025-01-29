@@ -1,10 +1,14 @@
 import "./App.css";
-import Carrossel from "./components/layout/Carrossel/Carrossel";
+import Home from "./components/pages/Home";
+import Header from "./components/layout/header/Header";
+import Footer from "./components/layout/footer/Footer";
 
 function Sandbox() {
     return (
         <>
-            <Carrossel />
+            <Header />
+            <Home />
+            <Footer />
         </>
     );
 }
