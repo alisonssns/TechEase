@@ -12,22 +12,15 @@ function ProductCard({ id, nome, valor, desc_home, img }: ProductCardProps) {
     return (
         <div className={styles.productCard}>
             <figure className={styles.imageContainer}>
-                <img src={`../../../../public/products/${img}`} alt={nome} className={styles.productImage} />
+                <img src={`/products/${img}`} alt={nome} className={styles.productImage} />
             </figure>
             <div className={styles.productInfo}>
-                <div className={styles.productNamePrice}>
+                <div className={styles.productTitle}>
                     <h3 className={styles.productName}>{nome}</h3>
-                    <p className={styles.productPrice}>R$ {valor}</p>
-                    <p className={styles.freeShipping}>Frete grátis</p>
+                    <p className={styles.desc}>{desc_home}</p>
                 </div>
-
-                <div className={styles.productDescription}>
-                    <p>{desc_home}</p>
-                </div>
+                <p className={styles.productPrice}>R$ {valor.toFixed(2)}</p>
             </div>
-            <button className={styles.addButton} aria-label={`Adicionar ${nome} ao carrinho`} id={id.toString()}>
-                Adicionar ao carrinho
-            </button>
         </div>
     )
 }

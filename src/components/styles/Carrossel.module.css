@@ -1,11 +1,21 @@
 .carrossel {
-  max-width: 95%;
+  width: 100%;
   margin: auto;
   overflow: hidden;
-  margin-top: 10px;
   color: #1f2120cc;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.765) 80%, #d9534f 80%);
-  border-radius: 5px;
+  position: relative;
+}
+
+.carrossel h2{
+  position: absolute;
+  padding: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 5px black;
+  color: white;
+  right: 0;
+  bottom: 0;
 }
 
 .slider {
@@ -19,8 +29,8 @@
 }
 
 .carrossel img {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   object-fit: contain;
   position: absolute;
   left: 20px;
@@ -36,7 +46,7 @@
 }
 
 .info .oldPrice {
-  opacity: 0.7;
+  opacity: 0.8;
   color: #999; 
   font-size: 20px;
 }
@@ -46,4 +56,75 @@
   font-size: 40px; 
   color: #d9534f; 
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+@media (max-width: 1024px) {  
+  .carrossel{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.765) 85%, #d9534f 85%);
+  }
+
+  .slider {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .carrossel img {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    position: relative;
+    left: 0;
+  }
+  
+  .info .oldPrice {
+    font-size: 16px;
+  }
+
+  .info .newPrice {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carrossel h2 {
+    font-size: 1.2rem;
+  }
+  
+  .carrossel img {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    left: 0;
+  }
+
+  .info .oldPrice {
+    font-size: 14px;
+  }
+
+  .info .newPrice {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carrossel h2 {
+    font-size: 1rem;
+    right: 5px;
+    bottom: 5px;
+  }
+
+  .carrossel img {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    left: 0;
+  }
+
+  .info .oldPrice {
+    font-size: 12px;
+  }
+
+  .info .newPrice {
+    font-size: 20px;
+  }
 }

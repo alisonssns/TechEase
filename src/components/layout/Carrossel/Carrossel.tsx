@@ -12,33 +12,34 @@ function Carrossel() {
     const [Produtos, setProdutos] = useState<Produto[]>([]);
 
     useEffect(() => {
-      axios.get<Produto[]>('http://localhost:5000/api/random')
-        .then(response => {
-          setProdutos(response.data);
-        })
-        .catch(error => {
-          console.error('Erro ao buscar dados:', error);
-        });
+        axios.get<Produto[]>('http://localhost:5000/api/random')
+            .then(response => {
+                setProdutos(response.data);
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados:', error);
+            });
     }, []);
 
     const settings = {
         infinite: true,
-        speed: 500, 
+        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 3000,
     };
 
     return (
         <div className={styles.carrossel}>
+            <h2>Ofertas</h2>
             <Slider {...settings}>
                 {Produtos.map((produto) => (
                     <div key={produto.id_prod}>
                         <div className={styles.slider}>
-                            <img 
-                                src={`/products/${produto.Img_prod}`} 
-                                alt={`Imagem do produto ${produto.nome_prod}`} 
+                            <img
+                                src={`/products/${produto.Img_prod}`}
+                                alt={`Imagem do produto ${produto.nome_prod}`}
                             />
                             <div className={styles.info}>
                                 <div>

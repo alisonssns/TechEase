@@ -1,10 +1,10 @@
 header{
-    background-color: #1F2120;
     width: 100%;
     color: #fff;
+    z-index: 1;
 }
 
-section{
+header section{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,10 +27,14 @@ section{
     justify-content: center;
     align-items: center;
     display: flex;
-    border: 0.5px solid #ffffffbd;
+    border: 2px solid #ffffffbd;
     border-radius: 4px;
     width: 50%;
     height: 30px;
+}
+
+.searchBar::placeholder{
+    color: rgba(255, 255, 255, 0.596);
 }
 
 .searchBar{

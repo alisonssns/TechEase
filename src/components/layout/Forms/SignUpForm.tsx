@@ -1,5 +1,5 @@
 import styles from '../../styles/Forms.module.css';
-import InputsHolder from '../Inputs/InputsHolder';
+import InputsHolder from '../inputs/InputsHolder';
 
 import React, { useState } from "react";
 import axios from "axios";
