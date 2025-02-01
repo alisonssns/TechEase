@@ -1,0 +1,95 @@
+.product {
+    background-color: var(--secundary-color);
+    width: 100%;
+    height: 460px;
+    padding: 20px 0;
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: row;
+}
+
+.product .imageSection {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageSection img {
+    filter: drop-shadow(5px 5px 3px rgba(128, 128, 128, 0.937));
+    width: 300px;
+    object-fit: contain;
+}
+
+.infoSection {
+    gap: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoSection>* {
+    width: 85%;
+}
+
+.infoSection .prices {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.287);
+}
+
+.infoSection h1 {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.infoSection .prices del {
+    font-size: smaller;
+    opacity: 0.8;
+}
+
+.infoSection .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.infoSection .buttons>button {
+    width: 48%;
+    padding: 3px;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.infoSection .selected{
+    background-color: var(--primary-color);
+    color: var(--secundary-color);
+}
+
+.infoSection .normal{
+    background-color: transparent;
+    color:var(--primary-color);
+}
+
+.infoSection .textHolder{
+    font-weight: bold;
+    overflow: scroll;
+    height: 300px;
+    text-align: justify;
+}
+
+.infoSection input[type = "submit"]{
+    width: 40%;
+    padding: 5px;
+}
+
+.infoSection input[type = "submit"]:hover{
+    background-color: var(--highlight-color);
+}
+

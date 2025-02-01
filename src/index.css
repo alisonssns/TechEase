@@ -1,21 +1,22 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
 
-  /* background: linear-gradient(135deg, #f95f62 50%, #024c9b 50%); */
-  background-color: #1F2120;
+  background-color: var(--primary-color);
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #1f2120;
+  --secundary-color: #fff;
+  --highlight-color: #d9534f;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 5px;
   height: 12px;
 }
@@ -38,8 +39,8 @@ input[type="submit"] {
   height: 35px;
   width: 80%;
   font-weight: bold;
-  color: white;
-  background-color: #1F2120;
+  color: var(--secundary-color);
+  background-color: var(--primary-color);
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s ease;
@@ -47,7 +48,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #D94B4F;
+  background-color: var(--primary-color);
 }
 
 input::spelling-error,
@@ -67,7 +68,7 @@ textarea {
 
 a {
   font-weight: 500;
-  color: #333;
+  color: var(--primary-color);
   text-decoration: inherit;
 }
 
@@ -92,7 +93,7 @@ h1 {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: var(--secundary-color);
   }
 
   a:hover {
@@ -100,6 +101,6 @@ h1 {
   }
 
   button {
-    background-color: #f9f9f9;
+    background-color: var(--secundary-color);
   }
 }

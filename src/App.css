@@ -11,7 +11,7 @@ input{
 }
 
 b {
-  color: #F95F62;
+  color: var(--highlight-color);
 }
 
 h2 {

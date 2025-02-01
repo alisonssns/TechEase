@@ -27,7 +27,36 @@ db.connect((err) => {
 app.use(cors());
 
 app.get('/api/produtos', (req, res) => {
-  db.query('SELECT * FROM produtos LIMIT 19', (err, results) => {
+  db.query('SELECT * FROM produtos LIMIT 12', (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(results);
+  });
+});
+
+app.post('/api/produtoEscolhido', (req, res) => {
+  const { id } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ error: "ID do produto não fornecido" });
+  }
+
+  const query = 'SELECT * FROM produtos WHERE id_prod = ?';
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ error: "Produto não encontrado" });
+    }
+    res.json(results[0]);
+  });
+});
+
+
+app.get('/api/recentes', (req, res) => {
+  db.query('SELECT * FROM produtos order by id_prod desc LIMIT 4', (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }

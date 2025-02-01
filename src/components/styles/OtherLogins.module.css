@@ -2,13 +2,13 @@
     margin-top: 2em;
     width: 340px;
     padding: 1em 0;
-    background-color: white;
+    background-color: var(--secundary-color);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    color: black;
+    color: var(--primary-color);
 }
 
 .title{
@@ -42,11 +42,11 @@
 }
 
 .login:nth-child(1):hover{
-    color: white;
+    color: var(--secundary-color);
     background-color: red;
 }
 
 .login:nth-child(2):hover{
-    color: white;
+    color: var(--secundary-color);
     background-color: blue;
 }

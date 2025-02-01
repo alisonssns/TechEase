@@ -1,5 +1,9 @@
-.categories {
+.categories{
     width: 100%;
+    margin-top: 5em;
+}
+
+.categoriesHolder {
     margin-top: 2em;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -7,6 +11,7 @@
     align-items: center;
     gap: 40px;
 }
+
 
 .category_card {
     display: flex;
@@ -30,6 +35,6 @@
     opacity: 1;
     transform: translateY(-5px);
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.2);
-    background-color: #d9534f;
+    background-color: var(--highlight-color);
     border: none;
 }

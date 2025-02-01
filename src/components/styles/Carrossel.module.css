@@ -2,8 +2,8 @@
   width: 100%;
   margin: auto;
   overflow: hidden;
-  color: #1f2120cc;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.765) 80%, #d9534f 80%);
+  color: var(--primary-color);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.765) 85%, var(--highlight-color) 85%);
   position: relative;
 }
 
@@ -12,8 +12,8 @@
   padding: 10px;
   font-weight: bold;
   letter-spacing: 2px;
-  text-shadow: 1px 1px 5px black;
-  color: white;
+  text-shadow: 1px 1px 5px var(--primary-color);
+  color: var(--secundary-color);
   right: 0;
   bottom: 0;
 }
@@ -47,22 +47,19 @@
 
 .info .oldPrice {
   opacity: 0.8;
-  color: #999; 
+  color: var(--primary-color);
+  opacity: 0.3; 
   font-size: 20px;
 }
 
 .info .newPrice {
   font-weight: bold;
   font-size: 40px; 
-  color: #d9534f; 
+  color: var(--highlight-color); 
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
 @media (max-width: 1024px) {  
-  .carrossel{
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.765) 85%, #d9534f 85%);
-  }
-
   .slider {
     flex-direction: column;
     text-align: center;

@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 dotenv.env
+LineCounter.java

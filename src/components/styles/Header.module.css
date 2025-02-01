@@ -1,7 +1,8 @@
 header{
     width: 100%;
-    color: #fff;
+    color: var(--secundary-color);
     z-index: 1;
+    background-color: var(--primary-color);
 }
 
 header section{
@@ -10,7 +11,7 @@ header section{
     align-items: center;
     text-align: center;
     margin: 0 40px;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .links{
@@ -27,14 +28,17 @@ header section{
     justify-content: center;
     align-items: center;
     display: flex;
-    border: 2px solid #ffffffbd;
+    border: 2px solid #ffffff4a;
     border-radius: 4px;
     width: 50%;
     height: 30px;
 }
 
+
+
 .searchBar::placeholder{
-    color: rgba(255, 255, 255, 0.596);
+    color: var(--secundary-color);
+    opacity: 0.5;
 }
 
 .searchBar{

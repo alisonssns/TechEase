@@ -9,7 +9,7 @@ function Produtos() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    axios.get<Produto[]>('http://localhost:5000/api/produtos')
+    axios.get<Produto[]>('http://localhost:5000/api/recentes')
       .then(response => {
         setProdutos(response.data);
         setLoading(false);
@@ -26,9 +26,8 @@ function Produtos() {
 
   return (
     <section className={styles.products}>
-      <h1>Produtos Mais Vendidos</h1>
-      <h2>Confira os itens mais populares entre nossos clientes</h2>
-      <section className={styles.productHolder}>
+      <h1>Recem adicionados</h1>
+      <section className={styles.RecentProductHolder}>
         {Produtos.map(produto => (
           <ProductCard key={`Produto ${produto.id_prod}`} id={produto.id_prod} nome={produto.nome_prod} valor={produto.valor_prod} desc_home={produto.desc_prod_home} img={produto.Img_prod} />
         ))}

@@ -1,8 +1,8 @@
 footer {
-    background-color: #1F2120;
-    color: #fff;
+    color: var(--secondary-color);
     width: 100%;
-    margin-top: 5em;
+    background-color: var(--primary-color);
+    margin-top: 10px;
 }
 
 .topSection {

@@ -32,7 +32,6 @@ function Carrossel() {
 
     return (
         <div className={styles.carrossel}>
-            <h2>Ofertas</h2>
             <Slider {...settings}>
                 {Produtos.map((produto) => (
                     <div key={produto.id_prod}>
