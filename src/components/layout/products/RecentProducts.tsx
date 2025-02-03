@@ -29,7 +29,7 @@ function Produtos() {
       <h1>Recem adicionados</h1>
       <section className={styles.RecentProductHolder}>
         {Produtos.map(produto => (
-          <ProductCard key={`Produto ${produto.id_prod}`} id={produto.id_prod} nome={produto.nome_prod} valor={produto.valor_prod} desc_home={produto.desc_prod_home} img={produto.Img_prod} />
+          <ProductCard key={`Produto ${produto.id_prod}`} id={produto.id_prod} nome={produto.nome_prod} valor={produto.valor_prod} desc_home={produto.desc_prod_home} img={produto.img_prod} />
         ))}
       </section>
     </section>

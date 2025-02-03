@@ -39,12 +39,10 @@ function LoginForm({ switch: handleSwitch }: LoginFormProps) {
     return (
         <form onSubmit={handleSubmit}>
             <div className={styles.title}>{"Crie sua Conta"}</div>
-            <div className={styles.holder}>
                 <div className={styles.inputs}>
                     <InputsHolder fields={fields} />
                 </div>
                 <input type="submit" value={"Criar Conta"} />
-            </div>
             <u onClick={handleSwitch}>Já tem uma conta?</u>
         </form>
     );

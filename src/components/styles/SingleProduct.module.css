@@ -40,6 +40,12 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.287);
 }
 
+.infoSection .prices > div{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
 .infoSection h1 {
     color: var(--primary-color);
     margin: 0;

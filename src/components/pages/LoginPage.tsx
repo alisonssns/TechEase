@@ -11,10 +11,10 @@ function LoginPage() {
     };
 
     return (
-        <>
+        <section className='container'>
             {!isLogin ? <SignUpForm switch={handleSwitch} /> : <LoginForm switch={handleSwitch} />}
             <OtherLogins />
-        </>
+        </section>
     );
 }
 

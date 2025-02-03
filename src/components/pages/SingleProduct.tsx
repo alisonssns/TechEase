@@ -2,11 +2,12 @@ import styles from '../styles/SingleProduct.module.css'
 import { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { Produto } from '../layout/products/Product';
+import { useParams } from "react-router-dom";
 
 function SingleProduct() {
+    const { nome, id } = useParams();
     const [produto, setProduto] = useState<Produto | null>(null);
     const [showDescription, setShowDescription] = useState(true);
-    const id = 22;
 
     useEffect(() => {
         axios.post<Produto>('http://localhost:5000/api/produtoEscolhido', { id })
@@ -29,13 +30,16 @@ function SingleProduct() {
     return (
         <section className={styles.product}>
             <div className={styles.imageSection}>
-                <img src={`/products/${produto.Img_prod}`} alt={produto.nome_prod} />
+                <img src={`/products/${produto.img_prod}`} alt={nome} />
             </div>
             <div className={styles.infoSection}>
-                <h1>{produto.nome_prod}</h1>
+                <h1>{nome}</h1>
                 <div className={styles.prices}>
                     <del>R$ {produto.valor_prod.toFixed(2)}</del>
-                    <b>R$ {(produto.valor_prod * 0.8).toFixed(2)}</b>
+                    <div>
+                        <b>R$ {(produto.valor_prod * 0.8).toFixed(2)}</b>
+                        <i>{produto.cat_prod}</i>
+                    </div>
                 </div>
                 <div className={styles.buttons}>
                     <button onClick={() => toggleDescription(true)} className={showDescription ? styles.selected : styles.normal}>Descrição</button>

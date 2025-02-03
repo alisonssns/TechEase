@@ -1,5 +1,6 @@
 import styles from '../../styles/Forms.module.css';
 import InputsHolder from '../inputs/InputsHolder';
+import { useNavigate } from "react-router-dom";
 
 import React, { useState } from "react";
 import axios from "axios";
@@ -11,6 +12,7 @@ interface LoginFormProps {
 function LoginForm({ switch: handleSwitch }: LoginFormProps) {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -21,6 +23,8 @@ function LoginForm({ switch: handleSwitch }: LoginFormProps) {
                 alert("Usuário encontrado com sucesso!");
                 setEmail("");
                 setSenha("");
+                navigate("./Home");
+
             })
             .catch((error) => {
                 alert(`Erro ao logar. ${error}`);
@@ -36,12 +40,10 @@ function LoginForm({ switch: handleSwitch }: LoginFormProps) {
     return (
         <form onSubmit={handleSubmit}>
             <div className={styles.title}>{"Bem vindo de volta!"}</div>
-            <div className={styles.holder}>
                 <div className={styles.inputs}>
                     <InputsHolder fields={fields} />
                 </div>
                 <input type="submit" value={"ENTRAR"} />
-            </div>
             <u onClick={handleSwitch}>Ainda <b>não</b> tem uma conta?</u>
         </form>
     );

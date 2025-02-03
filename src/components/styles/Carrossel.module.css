@@ -34,6 +34,7 @@
   object-fit: contain;
   position: absolute;
   left: 20px;
+  cursor: pointer;
 }
 
 .carrossel .info {

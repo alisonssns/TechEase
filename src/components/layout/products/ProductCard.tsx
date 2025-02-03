@@ -1,4 +1,5 @@
 import styles from '../../styles/Products.module.css'
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
     id: number;
@@ -8,9 +9,16 @@ interface ProductCardProps {
     img: string;
 }
 
+
 function ProductCard({ id, nome, valor, desc_home, img }: ProductCardProps) {
+    const Navigation = useNavigate();   
+
+    const handleClick = (nome : string, id: number) => {
+        Navigation(`/SingleProduct/${nome}/${id}`)
+    }
+
     return (
-        <div className={styles.productCard}>
+        <div className={styles.productCard} onClick={()=> handleClick(nome, id)}>
             <figure className={styles.imageContainer}>
                 <img src={`/products/${img}`} alt={nome} className={styles.productImage} />
             </figure>

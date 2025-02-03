@@ -7,9 +7,15 @@ import axios from 'axios';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from 'react-router-dom';
 
 function Carrossel() {
     const [Produtos, setProdutos] = useState<Produto[]>([]);
+    const Navigation = useNavigate();   
+
+    const handleClick = (nome : string, id: number) => {
+        Navigation(`/SingleProduct/${nome}/${id}`)
+    }
 
     useEffect(() => {
         axios.get<Produto[]>('http://localhost:5000/api/random')
@@ -36,8 +42,8 @@ function Carrossel() {
                 {Produtos.map((produto) => (
                     <div key={produto.id_prod}>
                         <div className={styles.slider}>
-                            <img
-                                src={`/products/${produto.Img_prod}`}
+                            <img onClick={()=> handleClick(produto.nome_prod, produto.id_prod)}
+                                src={`/products/${produto.img_prod}`}
                                 alt={`Imagem do produto ${produto.nome_prod}`}
                             />
                             <div className={styles.info}>

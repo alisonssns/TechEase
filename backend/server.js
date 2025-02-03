@@ -27,7 +27,17 @@ db.connect((err) => {
 app.use(cors());
 
 app.get('/api/produtos', (req, res) => {
-  db.query('SELECT * FROM produtos LIMIT 12', (err, results) => {
+  const { categoria } = req.query;
+
+  let query = 'SELECT * FROM produtos';
+  const queryParams = [];
+
+  if (categoria) {
+    query += ' WHERE cat_prod = ?';
+    queryParams.push(categoria);
+  }
+  
+  db.query(query, queryParams, (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -53,7 +63,6 @@ app.post('/api/produtoEscolhido', (req, res) => {
     res.json(results[0]);
   });
 });
-
 
 app.get('/api/recentes', (req, res) => {
   db.query('SELECT * FROM produtos order by id_prod desc LIMIT 4', (err, results) => {

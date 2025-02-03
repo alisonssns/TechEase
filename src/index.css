@@ -16,6 +16,10 @@
   --highlight-color: #d9534f;
 }
 
+.container{
+  margin: 20px;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 12px;

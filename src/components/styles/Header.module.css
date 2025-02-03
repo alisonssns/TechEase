@@ -28,7 +28,10 @@ header section{
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-direction: row;
     border: 2px solid #ffffff4a;
+    background-color: transparent;
+    color: var(--secundary-color);
     border-radius: 4px;
     width: 50%;
     height: 30px;

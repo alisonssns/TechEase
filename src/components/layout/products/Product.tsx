@@ -5,5 +5,6 @@ export interface Produto{
     desc_prod : string;
     espec_prod : string;
     desc_prod_home: string;
-    Img_prod: string;
+    img_prod: string;
+    cat_prod:string;
 }
