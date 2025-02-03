@@ -23,7 +23,7 @@ function LoginForm({ switch: handleSwitch }: LoginFormProps) {
                 alert("Usuário encontrado com sucesso!");
                 setEmail("");
                 setSenha("");
-                navigate("./Home");
+                navigate("/home");
 
             })
             .catch((error) => {

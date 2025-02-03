@@ -14,10 +14,10 @@ function Header() {
     return (
         <header>
             <section>
-                <h2>TechEase</h2>
+                <h2 onClick={() => handleClick('./home')}>TechEase</h2>
                 <SearchBar />
                 <div className={styles.links}>
-                    <Home onClick={()=> handleClick('/Home')}/>
+                    <Home onClick={()=> handleClick('/home')}/>
                     <Cart />
                     <Menu />
                 </div>

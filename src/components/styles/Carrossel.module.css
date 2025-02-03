@@ -5,6 +5,7 @@
   color: var(--primary-color);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.765) 85%, var(--highlight-color) 85%);
   position: relative;
+  border-radius: 5px;
 }
 
 .carrossel h2{

@@ -10,7 +10,7 @@ function Produtos({cat_prod} : {cat_prod : string}) {
 
   useEffect(() => {
     const url = cat_prod 
-      ? `http://localhost:5000/api/produtos?categoria=${cat_prod}` 
+      ? `http://localhost:5000/api/produtos?filter=${cat_prod}` 
       : 'http://localhost:5000/api/produtos';
 
     axios.get<Produto[]>(url)

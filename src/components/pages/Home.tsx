@@ -6,12 +6,12 @@ import styles from '../styles/Home.module.css'
 import { useParams } from 'react-router-dom';
 
 function Home() {
-    const {categoria} = useParams();
+    const { filter } = useParams();
 
     return (
         <div className={styles.home}>
             <Carrossel />
-            <ProductsHolder cat_prod={categoria || ''} />
+            <ProductsHolder cat_prod={ filter  || ''} />
             <Recent />
             <Categories />
         </div>

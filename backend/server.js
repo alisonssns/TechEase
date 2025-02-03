@@ -27,16 +27,17 @@ db.connect((err) => {
 app.use(cors());
 
 app.get('/api/produtos', (req, res) => {
-  const { categoria } = req.query;
+  const { filter } = req.query;
 
   let query = 'SELECT * FROM produtos';
   const queryParams = [];
 
-  if (categoria) {
-    query += ' WHERE cat_prod = ?';
-    queryParams.push(categoria);
+  if (filter) {
+    query += ' WHERE cat_prod LIKE ? OR nome_prod LIKE ?';
+    queryParams.push(`%${filter}%`);
+    queryParams.push(`%${filter}%`);
   }
-  
+
   db.query(query, queryParams, (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });

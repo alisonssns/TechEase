@@ -19,7 +19,7 @@ function Layout() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/home/:categoria" element={<Home />} />
+        <Route path="/home/:filter" element={<Home />} />
         <Route path="/singleProduct/:nome/:id" element={<SingleProduct />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
