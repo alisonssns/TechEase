@@ -7,6 +7,6 @@ import Sandbox from './Sandbox.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Sandbox />
+    <App />
   </StrictMode>,
 )

@@ -14,10 +14,7 @@
   --primary-color: #1f2120;
   --secundary-color: #fff;
   --highlight-color: #d9534f;
-}
-
-.container{
-  margin: 20px;
+  --base-width: 95%
 }
 
 ::-webkit-scrollbar {
@@ -70,20 +67,9 @@ textarea {
   text-decoration: none;
 }
 
-a {
-  font-weight: 500;
-  color: var(--primary-color);
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #484747;
-}
-
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -92,19 +78,4 @@ h1 {
   font-size: 2.5em;
   line-height: 1.1;
   margin: 0;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: var(--secundary-color);
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: var(--secundary-color);
-  }
 }

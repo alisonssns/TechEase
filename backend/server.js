@@ -27,15 +27,24 @@ db.connect((err) => {
 app.use(cors());
 
 app.get('/api/produtos', (req, res) => {
-  const { filter } = req.query;
+  const { filter, order, limit } = req.query;
 
   let query = 'SELECT * FROM produtos';
   const queryParams = [];
+  const ordersArr = [ 'id_prod desc', 'id_prod asc', 'valor_prod asc', 'valor_prod desc']
 
   if (filter) {
-    query += ' WHERE cat_prod LIKE ? OR nome_prod LIKE ?';
+    query += ' WHERE nome_prod LIKE ? or cat_prod LIKE ?';
     queryParams.push(`%${filter}%`);
     queryParams.push(`%${filter}%`);
+  }
+
+  if(order) {
+    query += ` ORDER BY ${ordersArr[order]}`;
+  }
+
+  if(limit){
+    query += ` LIMIT ${limit}`
   }
 
   db.query(query, queryParams, (err, results) => {
@@ -45,6 +54,7 @@ app.get('/api/produtos', (req, res) => {
     res.json(results);
   });
 });
+
 
 app.post('/api/produtoEscolhido', (req, res) => {
   const { id } = req.body;

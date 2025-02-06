@@ -1,4 +1,4 @@
-form {
+.container form {
     width: 340px;
     height: 360px;
     background-color: var(--secundary-color);

@@ -6,6 +6,7 @@ import Header from "./components/layout/header/Header";
 import Footer from "./components/layout/footer/Footer";
 import PageNotFound from "./components/pages/PageNotFound";
 import "./App.css";
+import SearchPage from "./components/pages/SearchPage";
 
 function Layout() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function Layout() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/home/:filter" element={<Home />} />
+        <Route path="/search/:filter/:orderFilter" element={<SearchPage />} />
         <Route path="/singleProduct/:nome/:id" element={<SingleProduct />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

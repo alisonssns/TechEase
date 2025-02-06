@@ -1,6 +1,6 @@
 footer {
     color: var(--secondary-color);
-    width: 100%;
+    width: var(--base-width);
     background-color: var(--primary-color);
     margin-top: 10px;
 }
@@ -9,7 +9,6 @@ footer {
     display: flex;
     justify-content: space-between;
     padding: 20px 0;
-    margin: 0 40px;
     border-bottom: 1px solid #ffffff2b;
 }
 

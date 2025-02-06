@@ -1,14 +1,4 @@
-.products{
-    width: 100%;
-    margin-top: 5em;
-}
-
-.products h2{
-    opacity: 0.8;
-}
-
 .productHolder {
-    margin-top: 4em;
     display: grid;
     grid-template-columns: repeat(auto-fit, 250px);
     justify-content: space-between;
@@ -24,7 +14,6 @@
     align-items: center;
     gap: 30px;
 }
-
 
 .productCard {
     display: flex;
@@ -66,7 +55,7 @@
 .productInfo {
     margin-top: 10px;
     height: 100px;
-    width: 95%;
+    width: var(--base-width);
     gap: 5px;
     display: flex;
     flex-direction: column;

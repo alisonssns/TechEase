@@ -1,21 +1,21 @@
 import { useNavigate } from 'react-router-dom'
-import styles from '../../styles/Header.module.css'
+import styles from '../../styles/SearchBar.module.css'
 import { BiSearch as Search } from 'react-icons/bi'
 import { useState } from 'react'
 
-function SearchBar() {
+function SearchBar({type} : {type : string}) {
     const navigation = useNavigate()
     const [searchValue, setSearchValue] = useState('')
 
     const handleClick = () => {
         if (searchValue) {
-            navigation(`/home/${searchValue}`)
-            window.location.reload();
+            navigation(`/search/${searchValue}/0`)
+            setSearchValue('')
         }
     }
 
     return (
-        <form className={styles.searchBarHolder} onSubmit={(e) => { e.preventDefault(); handleClick(); }}>
+        <form className={styles[type]} onSubmit={(e) => { e.preventDefault(); handleClick(); }}>
             <input
                 type='text'
                 className={styles.searchBar}

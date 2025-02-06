@@ -4,7 +4,7 @@ import { FaComputerMouse as Computer, FaTv as Monitor, FaMicrochip as Misc, FaHa
 function Categories() {
     const Navigation = useNavigate();
     const handleClick = (categoria: string) =>{
-        Navigation(`/Home/${categoria}`);
+        Navigation(`/search/${categoria}/0`);
         window.location.reload();
     }
 

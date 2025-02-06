@@ -1,44 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Produto } from './Product';
-import ProductCard from './ProductCard';
-import styles from '../../styles/Products.module.css'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Produto } from "./Product";
+import ProductCard from "./ProductCard";
+import styles from "../../styles/Products.module.css";
 
-function Produtos({cat_prod} : {cat_prod : string}) {
-  const [Produtos, setProdutos] = useState<Produto[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const url = cat_prod 
-      ? `http://localhost:5000/api/produtos?filter=${cat_prod}` 
-      : 'http://localhost:5000/api/produtos';
-
-    axios.get<Produto[]>(url)
-      .then(response => {
-        setProdutos(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Erro ao buscar dados:', error);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <p>Carregando...</p>;
-  }
-
-  return (
-    <section className={styles.products}>
-      <h1>Produtos Mais Vendidos</h1>
-      <h2>Confira os itens mais populares entre nossos clientes</h2>
-      <section className={styles.productHolder}>
-        {Produtos.map(produto => (
-          <ProductCard key={`Produto ${produto.id_prod}`} id={produto.id_prod} nome={produto.nome_prod} valor={produto.valor_prod} desc_home={produto.desc_prod_home} img={produto.img_prod} />
-        ))}
-      </section>
-    </section>
-  );
+interface ProductsHolderProps {
+    filter?: string;
+    order?: string;
+    limit?: string;
+    onUpdateResults?: (count: number) => void;
 }
 
-export default Produtos;
+function ProductsHolder({ filter, order, limit, onUpdateResults }: ProductsHolderProps) {
+    const [produtos, setProdutos] = useState<Produto[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        setLoading(true);
+        const url = `http://localhost:5000/api/produtos?filter=${filter || ''}&order=${order|| ''}&limit=${limit || ''}`;
+
+        axios
+            .get<Produto[]>(url)
+            .then((response) => {
+                setProdutos(response.data);
+                onUpdateResults?.(response.data.length);
+            })
+            .catch((error) => {
+                console.error("Erro ao buscar dados:", error);
+                onUpdateResults?.(0);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [filter, order, onUpdateResults]);
+
+    if (loading) {
+        return <p>Carregando...</p>;
+    }
+
+    return (
+        <section className={styles.productHolder}>
+            {produtos.length > 0 ? (
+                produtos.map((produto) => (
+                    <ProductCard
+                        key={produto.id_prod}
+                        id={produto.id_prod}
+                        nome={produto.nome_prod}
+                        valor={produto.valor_prod}
+                        desc_home={produto.desc_prod_home}
+                        img={produto.img_prod}
+                    />
+                ))
+            ) : (
+                <p>Nenhum produto encontrado.</p>
+            )}
+        </section>
+    );
+}
+
+export default ProductsHolder;
