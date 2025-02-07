@@ -9,7 +9,7 @@ function Produtos() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    axios.get<Produto[]>('http://localhost:5000/api/recentes')
+    axios.get<Produto[]>('http://localhost:5000/api/produtos?order=0&limit=4')
       .then(response => {
         setProdutos(response.data);
         setLoading(false);
@@ -27,7 +27,7 @@ function Produtos() {
   return (
       <section className={styles.RecentProductHolder}>
         {Produtos.map(produto => (
-          <ProductCard key={`Produto ${produto.id_prod}`} id={produto.id_prod} nome={produto.nome_prod} valor={produto.valor_prod} desc_home={produto.desc_prod_home} img={produto.img_prod} />
+          <ProductCard key={`Produto ${produto.id_prod}`} id={produto.id_prod} name={produto.nome_prod} price={produto.valor_prod} desc_home={produto.desc_prod_home} img={produto.img_prod} />
         ))}
       </section>
   );

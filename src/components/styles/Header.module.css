@@ -28,6 +28,21 @@ header section{
     cursor: pointer;
 }
 
+.links .cart{
+    position: relative;
+    display: flex;
+    place-content: center;
+}
+
+.links .cart > b{
+    color: var(--secundary-color);
+    position: absolute;
+    font-weight: bold;
+    font-size: 11px;
+    top: -8px;
+    right: -4px;
+}
+
 .menu{
     display: flex;
     flex-direction: column;

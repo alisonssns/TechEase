@@ -7,4 +7,5 @@ export interface Produto{
     desc_prod_home: string;
     img_prod: string;
     cat_prod:string;
+    quantidade:number;
 }

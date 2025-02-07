@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import styles from '../../styles/Categories.module.css'
 import { FaComputerMouse as Computer, FaTv as Monitor, FaMicrochip as Misc, FaHardDrive as Hardware } from 'react-icons/fa6'
+
 function Categories() {
     const Navigation = useNavigate();
-    const handleClick = (categoria: string) =>{
-        Navigation(`/search/${categoria}/0`);
+    const handleClick = (category: string) =>{
+        Navigation(`/search/${category}/0`);
         window.location.reload();
     }
 

@@ -31,7 +31,7 @@ app.get('/api/produtos', (req, res) => {
 
   let query = 'SELECT * FROM produtos';
   const queryParams = [];
-  const ordersArr = [ 'id_prod desc', 'id_prod asc', 'valor_prod asc', 'valor_prod desc']
+  const ordersArr = ['id_prod desc', 'id_prod asc', 'valor_prod asc', 'valor_prod desc', 'rand()']
 
   if (filter) {
     query += ' WHERE nome_prod LIKE ? or cat_prod LIKE ?';
@@ -39,11 +39,11 @@ app.get('/api/produtos', (req, res) => {
     queryParams.push(`%${filter}%`);
   }
 
-  if(order) {
+  if (order) {
     query += ` ORDER BY ${ordersArr[order]}`;
   }
 
-  if(limit){
+  if (limit) {
     query += ` LIMIT ${limit}`
   }
 
@@ -54,7 +54,6 @@ app.get('/api/produtos', (req, res) => {
     res.json(results);
   });
 });
-
 
 app.post('/api/produtoEscolhido', (req, res) => {
   const { id } = req.body;
@@ -75,27 +74,40 @@ app.post('/api/produtoEscolhido', (req, res) => {
   });
 });
 
-app.get('/api/recentes', (req, res) => {
-  db.query('SELECT * FROM produtos order by id_prod desc LIMIT 4', (err, results) => {
+app.post("/api/updateCart", async (req, res) => {
+  const { idUser, idProd, option } = req.query;
+  const querys = [
+    "INSERT INTO carrinhousuario (id_prod, id_user, quantidade) VALUES (?, ?, 1) ON DUPLICATE KEY UPDATE quantidade = quantidade + 1;",
+    "UPDATE carrinhousuario SET quantidade = quantidade - 1 WHERE id_prod = ? AND id_user = ? AND quantidade > 1;",
+    "DELETE FROM carrinhousuario WHERE id_prod = ? AND id_user = ?"];
+
+  db.query(querys[option], [idProd, idUser], (err, result) => {
     if (err) {
-      return res.status(500).json({ error: err.message });
+      console.error("Erro ao executar a query: ", err);
+      return res.status(500).json({ error: "Erro ao atualizar carrinho" });
     }
-    res.json(results);
+
+    res.status(200).json({ message: "Carrinho atualizado com sucesso", result });
   });
 });
 
-app.get('/api/random', (req, res) => {
-  db.query('SELECT * FROM produtos ORDER BY RAND() LIMIT 5', (err, results) => {
+
+app.get('/api/getCartContent', (req, res) => {
+  const { idUser } = req.query;
+  const query = "SELECT produtos.*, carrinhousuario.quantidade FROM carrinhousuario INNER JOIN produtos ON carrinhousuario.id_prod = produtos.id_prod;";
+
+  db.query(query, [idUser], (err, cartItems) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
-    res.json(results);
-  });
+
+    res.json(cartItems);
+  })
 });
+
 
 app.post("/api/register", async (req, res) => {
   const { nome, email, senha } = req.body;
-
 
   const saltRounds = 10;
   bcrypt.hash(senha, saltRounds, (err, hashedPassword) => {

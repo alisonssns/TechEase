@@ -2,12 +2,15 @@ import styles from '../styles/SingleProduct.module.css'
 import { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { Produto } from '../layout/products/Product';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useCart } from '../layout/cart/CartContext';
 
 function SingleProduct() {
     const { nome, id } = useParams();
     const [produto, setProduto] = useState<Produto | null>(null);
     const [showDescription, setShowDescription] = useState(true);
+    const { gerenciarCarrinho } = useCart();
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.post<Produto>('http://localhost:5000/api/produtoEscolhido', { id })
@@ -27,6 +30,11 @@ function SingleProduct() {
         return <p>Carregando...</p>;
     }
 
+    const addToCart = () =>{
+        gerenciarCarrinho(produto.id_prod , 0);
+        navigate('/cart')
+    }
+
     return (
         <section className={styles.product}>
             <div className={styles.imageSection}>
@@ -35,9 +43,9 @@ function SingleProduct() {
             <div className={styles.infoSection}>
                 <h1>{nome}</h1>
                 <div className={styles.prices}>
-                    <del>R$ {produto.valor_prod.toFixed(2)}</del>
+                    <del>R$ {(produto.valor_prod * 1.3).toFixed(2)}</del>
                     <div>
-                        <b>R$ {(produto.valor_prod * 0.8).toFixed(2)}</b>
+                        <b>R$ {(produto.valor_prod).toFixed(2)}</b>
                         <i>{produto.cat_prod}</i>
                     </div>
                 </div>
@@ -48,7 +56,7 @@ function SingleProduct() {
                 <div className={styles.textHolder}>
                     {showDescription ? produto.desc_prod : produto.espec_prod}
                 </div>
-                <input type="submit" value="Adicionar ao Carrinho" />
+                <input type="submit" value="Adicionar ao Carrinho" onClick={addToCart}/>
             </div>
         </section>
     );

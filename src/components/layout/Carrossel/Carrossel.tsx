@@ -11,14 +11,14 @@ import { useNavigate } from 'react-router-dom';
 
 function Carrossel() {
     const [Produtos, setProdutos] = useState<Produto[]>([]);
-    const Navigation = useNavigate();   
+    const Navigation = useNavigate();
 
-    const handleClick = (nome : string, id: number) => {
+    const handleClick = (nome: string, id: number) => {
         Navigation(`/SingleProduct/${nome}/${id}`)
     }
 
     useEffect(() => {
-        axios.get<Produto[]>('http://localhost:5000/api/random')
+        axios.get<Produto[]>('http://localhost:5000/api/produtos/?order=4&limit=5')
             .then(response => {
                 setProdutos(response.data);
             })
@@ -42,7 +42,7 @@ function Carrossel() {
                 {Produtos.map((produto) => (
                     <div key={produto.id_prod}>
                         <div className={styles.slider}>
-                            <img onClick={()=> handleClick(produto.nome_prod, produto.id_prod)}
+                            <img onClick={() => handleClick(produto.nome_prod, produto.id_prod)}
                                 src={`/products/${produto.img_prod}`}
                                 alt={`Imagem do produto ${produto.nome_prod}`}
                             />
@@ -52,8 +52,8 @@ function Carrossel() {
                                     <i>{produto.desc_prod_home}</i>
                                 </div>
                                 <div>
-                                    <div className={styles.oldPrice}>DE <del>R$ {produto.valor_prod.toFixed(2)}</del></div>
-                                    <div className={styles.newPrice}>POR R$ {(produto.valor_prod * 0.8).toFixed(2)}</div>
+                                    <div className={styles.oldPrice}>DE <del>R$ {(produto.valor_prod * 1.3).toFixed(2)}</del></div>
+                                    <div className={styles.newPrice}>POR R$ {(produto.valor_prod).toFixed(2)}</div>
                                 </div>
                             </div>
                         </div>

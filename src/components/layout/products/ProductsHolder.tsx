@@ -45,8 +45,8 @@ function ProductsHolder({ filter, order, limit, onUpdateResults }: ProductsHolde
                     <ProductCard
                         key={produto.id_prod}
                         id={produto.id_prod}
-                        nome={produto.nome_prod}
-                        valor={produto.valor_prod}
+                        name={produto.nome_prod}
+                        price={produto.valor_prod}
                         desc_home={produto.desc_prod_home}
                         img={produto.img_prod}
                     />

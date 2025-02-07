@@ -7,6 +7,7 @@ import Footer from "./components/layout/footer/Footer";
 import PageNotFound from "./components/pages/PageNotFound";
 import "./App.css";
 import SearchPage from "./components/pages/SearchPage";
+import ShoppingCart from "./components/pages/ShoppingCart";
 
 function Layout() {
   const location = useLocation();
@@ -17,8 +18,9 @@ function Layout() {
       {!hideHeaderOnPaths.includes(location.pathname) && <Header />}
       
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/cart" />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/home" element={<Home />} />
         <Route path="/search/:filter/:orderFilter" element={<SearchPage />} />
         <Route path="/singleProduct/:nome/:id" element={<SingleProduct />} />
