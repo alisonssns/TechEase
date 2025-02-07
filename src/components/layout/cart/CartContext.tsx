@@ -28,7 +28,6 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
         
         axios.post(url)
             .then(response => {
-                console.log('Carrinho atualizado com sucesso:', response.data);
                 setAtualizarCarrinho(prev => !prev);
             })
             .catch(error => {

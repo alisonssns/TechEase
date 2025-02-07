@@ -1,4 +1,3 @@
-import { FaThumbsUp } from "react-icons/fa6"
 import styles from '../../styles/ShoppingCart.module.css'
 import { useCart } from "./CartContext"
 
@@ -29,7 +28,7 @@ function OrderDetails() {
                 <input type="submit" value="Finalizar Compra" />
 
                 <div className={styles.option}>
-                    <label><input type="radio" name="option" className="hide" />Boleto</label>
+                    <label><input type="radio" name="option" className="hide" checked/>Boleto</label>
                     <label><input type="radio" name="option" className="hide" />Pix</label>
                 </div>
             </>

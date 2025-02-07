@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Produto } from "./Product";
 import ProductCard from "./ProductCard";
@@ -44,11 +44,7 @@ function ProductsHolder({ filter, order, limit, onUpdateResults }: ProductsHolde
                 produtos.map((produto) => (
                     <ProductCard
                         key={produto.id_prod}
-                        id={produto.id_prod}
-                        name={produto.nome_prod}
-                        price={produto.valor_prod}
-                        desc_home={produto.desc_prod_home}
-                        img={produto.img_prod}
+                        produto={produto}
                     />
                 ))
             ) : (

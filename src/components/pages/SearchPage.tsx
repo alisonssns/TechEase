@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import SearchBar from "../layout/header/SearchBar";
 import ProductsHolder from "../layout/products/ProductsHolder";
 import styles from "../styles/SearchPage.module.css";
 
@@ -9,8 +8,6 @@ function SearchPage() {
     const [totalResults, setTotalResults] = useState(0);
     const [order, setOrder] = useState(orderFilter || "");
     const navigate = useNavigate();  
-    console.log(orderFilter)
-
     const apply = () =>{
         navigate(`/search/${filter}/${order}`)
     }

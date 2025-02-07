@@ -1,15 +1,8 @@
 import styles from '../../styles/Products.module.css'
 import { useNavigate } from "react-router-dom";
+import { Produto } from './Product';
 
-interface ProductCardProps {
-    id: number;
-    name: string;
-    price: number;
-    desc_home: string;
-    img: string;
-}
-
-function ProductCard({ id, name, price, desc_home, img }: ProductCardProps) {
+function ProductCard({ produto }: {produto : Produto}) {
     const Navigation = useNavigate();   
 
     const handleClick = (name : string, id: number) => {
@@ -17,16 +10,16 @@ function ProductCard({ id, name, price, desc_home, img }: ProductCardProps) {
     }
 
     return (
-        <div className={styles.productCard} onClick={()=> handleClick(name, id)}>
+        <div className={styles.productCard} onClick={()=> handleClick(produto.nome_prod, produto.id_prod)}>
             <figure className={styles.imageContainer}>
-                <img src={`/products/${img}`} alt={name} className={styles.productImage} />
+                <img src={`/products/${produto.img_prod}`} alt={produto.nome_prod} className={styles.productImage} />
             </figure>
             <div className={styles.productInfo}>
                 <div className={styles.productTitle}>
-                    <h3 className={styles.productName}>{name}</h3>
-                    <p className={styles.desc}>{desc_home}</p>
+                    <h3 className={styles.productName}>{produto.nome_prod}</h3>
+                    <p className={styles.desc}>{produto.desc_prod_home}</p>
                 </div>
-                <p className={styles.productPrice}>R$ {price.toFixed(2)}</p>
+                <p className={styles.productPrice}>R$ {produto.valor_prod.toFixed(2)}</p>
             </div>
         </div>
     )

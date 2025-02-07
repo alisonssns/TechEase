@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
 import CartProducts from '../layout/cart/CartProducts'
+import Recomendations from '../layout/cart/Recomendations'
 import OrderDetails from '../layout/cart/OrderDetails'
 import styles from '../styles/ShoppingCart.module.css'
-import {Produto} from '../layout/products/Product';
 
 function ShoppingCart() {
-        return (
+    return (
         <section className={styles.shoppingCart}>
             <div className={styles.cartHolder}>
                 <CartProducts />
                 <OrderDetails />
             </div>
+            <Recomendations/>
         </section>
     )
 }
