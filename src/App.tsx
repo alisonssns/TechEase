@@ -18,7 +18,7 @@ function Layout() {
       {!hideHeaderOnPaths.includes(location.pathname) && <Header />}
       
       <Routes>
-        <Route path="/" element={<Navigate to="/cart" />} />
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/home" element={<Home />} />
