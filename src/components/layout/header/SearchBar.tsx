@@ -9,7 +9,7 @@ function SearchBar({type} : {type : string}) {
 
     const handleClick = () => {
         if (searchValue) {
-            navigation(`/search/${searchValue}/0`)
+            navigation(`/search?filter=${searchValue}&orderFilter=0`)
             setSearchValue('')
         }
     }

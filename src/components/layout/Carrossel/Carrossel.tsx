@@ -13,8 +13,8 @@ function Carrossel() {
     const [Produtos, setProdutos] = useState<Produto[]>([]);
     const Navigation = useNavigate();
 
-    const handleClick = (nome: string, id: number) => {
-        Navigation(`/SingleProduct/${nome}/${id}`)
+    const handleClick = (name: string, id: number) => {
+        Navigation(`/SingleProduct?nome=${name}&id=${id}`)
     }
 
     useEffect(() => {

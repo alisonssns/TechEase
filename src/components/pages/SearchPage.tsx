@@ -1,14 +1,18 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import { useState } from "react";
 import ProductsHolder from "../layout/products/ProductsHolder";
 import styles from "../styles/SearchPage.module.css";
 
 function SearchPage() {
-    const { filter, orderFilter } = useParams();
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+
+    const filter = searchParams.get('filter');
+    const orderFilter = searchParams.get('orderFilter');
     const [totalResults, setTotalResults] = useState(0);
     const [order, setOrder] = useState(orderFilter || "");
-    const navigate = useNavigate();  
-    const apply = () =>{
+    const navigate = useNavigate();
+    const apply = () => {
         navigate(`/search/${filter}/${order}`)
     }
 
@@ -33,7 +37,7 @@ function SearchPage() {
                 <button onClick={apply}>Aplicar</button>
             </div>
             <div className={styles.results}>
-                <ProductsHolder filter={filter || ""}  order={orderFilter || ""} onUpdateResults={setTotalResults} />
+                <ProductsHolder filter={filter || ""} order={orderFilter || ""} onUpdateResults={setTotalResults} />
             </div>
         </section>
     );

@@ -6,7 +6,7 @@ function ProductCard({ produto }: {produto : Produto}) {
     const Navigation = useNavigate();   
 
     const handleClick = (name : string, id: number) => {
-        Navigation(`/SingleProduct/${name}/${id}`)
+        Navigation(`/SingleProduct?nome=${name}&id=${id}`)
     }
 
     return (

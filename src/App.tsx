@@ -22,8 +22,8 @@ function Layout() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/search/:filter/:orderFilter" element={<SearchPage />} />
-        <Route path="/singleProduct/:nome/:id" element={<SingleProduct />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/singleProduct" element={<SingleProduct />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 
