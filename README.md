@@ -1,6 +1,6 @@
 # TechEase
 
-![status badge](https://img.shields.io/badge/status-Em Desenvolvimento-orange)
+![status badge](https://img.shields.io/badge/status-Desenvolvendo-orange)
 
 ## Tabela de Conteúdos
 
