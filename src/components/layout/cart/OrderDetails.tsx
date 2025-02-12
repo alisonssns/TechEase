@@ -13,7 +13,7 @@ function OrderDetails() {
                     {carrinho.slice(0, 3).map((item, index) => (
                         <div key={index} className={styles.row}>
                             <p>{`${item.nome_prod} (${item.quantidade})`}</p>
-                            <p>{`R$ ${(item.valor_prod * item.quantidade).toFixed(2)}`}</p>
+                            <p>{`R$ ${(item.valor_prod * item.quantidade).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</p>
                         </div>
                     ))}
                 </div>
@@ -22,7 +22,7 @@ function OrderDetails() {
                 )}
                 <div className={styles.row}>
                     <b>Valor total</b>
-                    <b>{`R$ ${carrinho.reduce((total, item) => total + (item.valor_prod * item.quantidade), 0).toFixed(2)}`}</b>
+                    <b>{`R$ ${carrinho.reduce((total, item) => total + (item.valor_prod * item.quantidade), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</b>
                 </div>
 
                 <input type="submit" value="Finalizar Compra" />

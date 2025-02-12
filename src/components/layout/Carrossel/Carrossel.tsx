@@ -1,5 +1,5 @@
 import styles from '../../styles/Carrossel.module.css'
-import { Produto } from '../products/Product';
+import { Produto } from '../../interfaces/Product';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -53,8 +53,8 @@ function Carrossel() {
                                     <i>{produto.desc_prod_home}</i>
                                 </div>
                                 <div>
-                                    <div className={styles.oldPrice}>DE <del>R$ {(produto.valor_prod * 1.3).toFixed(2)}</del></div>
-                                    <div className={styles.newPrice}>POR R$ {(produto.valor_prod).toFixed(2)}</div>
+                                    <div className={styles.oldPrice}>DE <del>R$ {(produto.valor_prod *1.3).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</del></div>
+                                    <div className={styles.newPrice}>POR R$ {(produto.valor_prod).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
                                 </div>
                             </div>
                         </div>

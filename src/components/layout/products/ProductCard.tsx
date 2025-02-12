@@ -1,6 +1,6 @@
 import styles from '../../styles/Products.module.css'
 import { useNavigate } from "react-router-dom";
-import { Produto } from './Product';
+import { Produto } from '../../interfaces/Product';
 
 function ProductCard({ produto }: {produto : Produto}) {
     const Navigation = useNavigate();   
@@ -19,7 +19,7 @@ function ProductCard({ produto }: {produto : Produto}) {
                     <h3 className={styles.productName}>{produto.nome_prod}</h3>
                     <p className={styles.desc}>{produto.desc_prod_home}</p>
                 </div>
-                <p className={styles.productPrice}>R$ {produto.valor_prod.toFixed(2)}</p>
+                <p className={styles.productPrice}>R$ {produto.valor_prod.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
             </div>
         </div>
     )

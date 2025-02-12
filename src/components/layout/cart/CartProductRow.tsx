@@ -1,7 +1,7 @@
 import styles from '../../styles/ShoppingCart.module.css'
 import { TiPlus as Plus, TiMinus as Minus } from "react-icons/ti";
 import { FaXmark as Remove } from 'react-icons/fa6';
-import { Produto } from '../products/Product';
+import { Produto } from '../../interfaces/Product';
 import { useCart } from './CartContext';
 
 function CartProductRow({ produto }: { produto: Produto }) {
@@ -19,7 +19,7 @@ function CartProductRow({ produto }: { produto: Produto }) {
                 <p>{produto.quantidade}</p>
                 <Plus onClick={() => gerenciarCarrinho(produto.id_prod, 0)} />
             </div>
-            <b className={styles.price}>R$ {((produto.valor_prod).toFixed(2))}</b>
+            <b className={styles.price}>R$ {(produto.valor_prod).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b>
             <div className={styles.remove}>
                 <Remove onClick={() => gerenciarCarrinho(produto.id_prod, 2)} />
             </div>

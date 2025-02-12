@@ -1,0 +1,138 @@
+.profilePage {
+    width: var(--base-width);
+    display: flex;
+}
+
+.profileNavBar {
+    background-color: #1F2120;
+    width: 200px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.profileNavBar h3 {
+    margin-top: 100px;
+}
+
+.profileNavBar ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.profileNavBar ul li {
+    border-radius: 5px;
+    padding: 10px 0;
+    transition: 0.5s ease;
+    text-indent: 15px;
+    word-spacing: 10px;
+}
+
+.profileNavBar ul li:hover {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+.profileNavBar ul a {
+    opacity: 0.5;
+    text-decoration: none;
+    color: var(--secundary-color);
+}
+
+.profileNavBar .active {
+    opacity: 1;
+}
+
+.profileHolder {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    padding: 40px 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    gap: 40px;
+}
+
+.profileHolder::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--secundary-color);
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.profileHolder h3{
+    width: 60%;
+    color: var(--primary-color);
+}
+
+.rowHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--secundary-color);
+    box-shadow: 3px 3px 3px rgba(57, 55, 55, 0.309);
+    padding: 0 30px;
+    border-radius: 5px;
+    width: 60%;
+}
+
+.rowHolder .empty{
+    display: grid;
+    gap: 20px;
+    padding: 40px;
+    text-align: center;
+}
+
+.linkRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 56px;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.linkRow:first-of-type{
+    border: none;
+}
+
+.linkRow{
+    border-top: 1px solid rgba(0, 0, 0, 0.092);
+}
+
+.linkRow h3{
+    font-weight: normal;
+    min-width: 150px;
+}
+
+.linkRow p{
+    opacity: 0.8;
+    min-width: 300px;
+}
+
+.linkRow .arrow, .linkRow .rotate{
+    transition: 0.5s ease;
+    font-size: 0.9em;
+}
+
+.linkRow:hover > .rotate{
+    rotate: 360deg;
+}
+
+.linkRow:hover > .arrow{
+    transform: translateX(-10px);
+}

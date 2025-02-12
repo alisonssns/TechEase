@@ -1,10 +1,17 @@
 import { FaUser, FaExclamation, FaPowerOff, FaQuestion } from "react-icons/fa6";
 import styles from '../../styles/Header.module.css'
+import { useNavigate } from "react-router-dom";
 
 function HeaderMenu() {
+    const navigation = useNavigate()
+
+    const handleClick = (route: string) => {
+        navigation(route);
+    }
+
     return (
         <div className={styles.menu}>
-            <div>
+            <div onClick={()=>handleClick('/profile')}>
                 <FaUser className={styles.menuImg}/>
                 Perfil
             </div>

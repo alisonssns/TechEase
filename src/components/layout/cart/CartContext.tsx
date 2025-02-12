@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { Produto } from "../products/Product";
+import { Produto } from "../../interfaces/Product";
 import axios from "axios";
 
 interface CarrinhoContextType {

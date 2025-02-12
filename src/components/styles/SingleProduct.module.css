@@ -53,9 +53,11 @@
     font-weight: bold;
 }
 
-.infoSection .prices del {
-    font-size: smaller;
-    opacity: 0.8;
+.infoSection .prices > b{
+    font-size: 0.8em;
+    opacity: 0.3;
+    color: var(--primary-color);
+    text-decoration: line-through;
 }
 
 .infoSection .buttons {

@@ -44,7 +44,7 @@
     font-size: 20px;
 }
 
-input {
+.headerSearch input {
     background-color: transparent;
     border: none;
     height: 100%;

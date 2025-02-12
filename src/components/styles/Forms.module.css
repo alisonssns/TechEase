@@ -1,4 +1,4 @@
-.container{
+.container {
     margin: 20px;
 }
 
@@ -13,7 +13,7 @@
     color: var(--primary-color);
 }
 
-.title {
+.container .title {
     font-weight: bold;
     font-size: 24px;
     letter-spacing: 3px;
@@ -55,7 +55,7 @@
     align-items: center;
 }
 
-.sobe {
+.inputs .sobe {
     position: absolute;
     pointer-events: none;
     font-size: 14px;
@@ -67,22 +67,22 @@
     left: 2px;
 }
 
-input:placeholder-shown~.sobe {
+.inputs input:placeholder-shown~.sobe {
     transform: translateY(0);
 }
 
-input:focus~.sobe {
+.inputs input:focus~.sobe {
     transform: translateY(-20px);
     font-weight: bold;
 }
 
-input::placeholder {
+.inputs input::placeholder {
     color: transparent;
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-    -webkit-text-fill-color: #000 !important;
+    -webkit-box-shadow: 0 0 0px 100px #ffffffdc inset !important;
+    -webkit-text-fill-color: var(--primary-color) !important;
 }
 
 u {
@@ -90,3 +90,4 @@ u {
     font-size: 12px;
     margin-top: 0.5em;
 }
+
