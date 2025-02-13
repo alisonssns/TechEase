@@ -2,7 +2,7 @@ import styles from '../../styles/ShoppingCart.module.css'
 import { TiPlus as Plus, TiMinus as Minus } from "react-icons/ti";
 import { FaXmark as Remove } from 'react-icons/fa6';
 import { Produto } from '../../interfaces/Product';
-import { useCart } from './CartContext';
+import { useCart } from '../../contexts/CartContext';
 
 function CartProductRow({ produto }: { produto: Produto }) {
     const { gerenciarCarrinho } = useCart();

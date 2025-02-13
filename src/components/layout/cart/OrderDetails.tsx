@@ -1,8 +1,22 @@
+import axios from 'axios';
 import styles from '../../styles/ShoppingCart.module.css'
-import { useCart } from "./CartContext"
+import { useCart } from "../../contexts/CartContext"
 
 function OrderDetails() {
-    const { carrinho } = useCart();
+    const { carrinho, setAtualizarCarrinho, atualizarCarrinho } = useCart();
+
+    const checkout = () => {
+        axios.post("http://localhost:5000/api/checkout", { carrinho, userId: '54' })
+            .then((response) => {
+                alert(response.data);
+                setAtualizarCarrinho(!atualizarCarrinho);
+            })
+            .catch((err) => {
+                console.error("Erro ao realizar pedido:", err);
+                alert("Erro ao realizar o pedido. Tente novamente.");
+            });
+    };
+
 
     return (
         <div className={styles.orderDetails}>
@@ -25,10 +39,10 @@ function OrderDetails() {
                     <b>{`R$ ${carrinho.reduce((total, item) => total + (item.valor_prod * item.quantidade), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</b>
                 </div>
 
-                <input type="submit" value="Finalizar Compra" />
+                <input type="submit" value="Finalizar Compra" onClick={checkout} />
 
                 <div className={styles.option}>
-                    <label><input type="radio" name="option" className="hide" checked/>Boleto</label>
+                    <label><input type="radio" name="option" className="hide" defaultChecked />Boleto</label>
                     <label><input type="radio" name="option" className="hide" />Pix</label>
                 </div>
             </>

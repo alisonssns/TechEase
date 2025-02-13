@@ -1,13 +1,15 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { Produto } from "../../interfaces/Product";
+import { Produto } from "../interfaces/Product";
 import axios from "axios";
 
-interface CarrinhoContextType {
+interface UserContextType {
     carrinho: Produto[];
+    atualizarCarrinho: boolean;
     gerenciarCarrinho: (id: number, opcao: number) => void;
+    setAtualizarCarrinho : (prev : boolean) => void
 }
 
-const CarrinhoContext = createContext<CarrinhoContextType | undefined>(undefined);
+const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
     const [carrinho, setCarrinho] = useState<Produto[]>([]);
@@ -37,14 +39,14 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
     
 
     return (
-        <CarrinhoContext.Provider value={{ carrinho, gerenciarCarrinho}}>
+        <UserContext.Provider value={{ carrinho, gerenciarCarrinho, setAtualizarCarrinho, atualizarCarrinho}}>
             {children}
-        </CarrinhoContext.Provider>
+        </UserContext.Provider>
     );
 };
 
 export const useCart = () => {
-    const context = useContext(CarrinhoContext);
+    const context = useContext(UserContext);
     if (!context) {
         throw new Error("useCart deve ser usado dentro de um CarrinhoProvider");
     }

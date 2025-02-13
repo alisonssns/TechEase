@@ -91,7 +91,6 @@ app.post("/api/updateCart", async (req, res) => {
   });
 });
 
-
 app.get('/api/getCartContent', (req, res) => {
   const { idUser } = req.query;
   const query = "SELECT produtos.*, carrinhousuario.quantidade FROM carrinhousuario INNER JOIN produtos ON carrinhousuario.id_prod = produtos.id_prod;";
@@ -103,6 +102,48 @@ app.get('/api/getCartContent', (req, res) => {
 
     res.json(cartItems);
   })
+});
+
+
+app.post('/api/checkout', (req, res) => {
+  const { carrinho, userId } = req.body;
+
+  let query = "INSERT INTO pedidos (id_user, valor_total) values (?, ?)";
+  const totalValue = carrinho.reduce((total, item) => total + (item.valor_prod * item.quantidade), 0);
+  const params = [userId, totalValue];
+
+  db.query(query, params, (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Erro ao realizar pedido");
+    }
+
+    const pedidoId = result.insertId;
+
+    const produtosQuery = "INSERT INTO pedidoprodutos (id_pedido, id_prod, quant) VALUES ?";
+    const produtosParams = carrinho.map(item => [
+      pedidoId,
+      item.id_prod,
+      item.quantidade,
+    ]);
+
+    db.query(produtosQuery, [produtosParams], (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send("Erro ao adicionar produtos ao pedido");
+      }
+      res.status(200).send("Pedido realizado com sucesso");
+    });
+
+    const cartQuery = "DELETE FROM carrinhousuario where id_user = ?";
+    const cartParams = [userId]
+
+    db.query(cartQuery, [cartParams], (err) => {
+      if (err) {
+        console.error(err);
+      }
+    });
+  });
 });
 
 

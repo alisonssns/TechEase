@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { Produto } from '../interfaces/Product';
 import { useLocation, useNavigate } from "react-router-dom";
-import { useCart } from '../layout/cart/CartContext';
+import { useCart } from '../contexts/CartContext';
 
 function SingleProduct() {
     const location = useLocation();

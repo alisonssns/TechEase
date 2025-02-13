@@ -10,7 +10,7 @@ function HeaderMenu() {
     }
 
     return (
-        <div className={styles.menu}>
+        <>
             <div onClick={()=>handleClick('/profile')}>
                 <FaUser className={styles.menuImg}/>
                 Perfil
@@ -27,7 +27,8 @@ function HeaderMenu() {
                 <FaQuestion className={styles.menuImg}/>
                 Sair
             </div>
-        </div>
+        </>
+
     )
 }
 

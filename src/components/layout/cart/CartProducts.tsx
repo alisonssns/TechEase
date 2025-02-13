@@ -1,6 +1,6 @@
 import styles from '../../styles/ShoppingCart.module.css'
 import CartProductRow from './CartProductRow'
-import { useCart } from './CartContext';
+import { useCart } from '../../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
 
 function CartProducts() {
