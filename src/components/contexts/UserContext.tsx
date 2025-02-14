@@ -13,13 +13,23 @@ interface User {
     token: string;
 }
 
+interface Pedido {
+    id: number;
+    id_user: number;
+    data: string;
+    valor_total: number;
+    status: string;
+}
+
 interface UserContextType {
     user: User | null;
     carrinho: Produto[];
+    pedidos: Pedido[];
     login: (email: string, senha: string) => void;
     logout: () => void;
     gerenciarCarrinho: (id: number, opcao: number) => void;
     setAtualizarCarrinho: (prev: boolean) => void;
+    checkout: () => void;
     atualizarCarrinho: boolean;
 }
 
@@ -28,7 +38,15 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     const [carrinho, setCarrinho] = useState<Produto[]>([]);
+    const [pedidos, setPedidos] = useState<Pedido[]>([]);
     const [atualizarCarrinho, setAtualizarCarrinho] = useState(false);
+
+    useEffect(() => {
+        const prevLogin = (localStorage.getItem("user"))
+        if (prevLogin) {
+            setUser(JSON.parse(prevLogin))
+        }
+    }, [])
 
     const login = async (email: string, senha: string) => {
         try {
@@ -37,6 +55,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             setUser(user);
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("token", token);
+
         } catch (error) {
             console.error("Erro ao fazer login:", error);
         }
@@ -59,8 +78,20 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             });
     }, [atualizarCarrinho]);
 
+    useEffect(() => {
+        if (user?.id) {
+            axios.get<Pedido[]>(`http://localhost:5000/api/orders/?idUser=${user.id}`)
+                .then(response => {
+                    setPedidos(response.data);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar pedidos:', error);
+                });
+        }
+    }, [user, atualizarCarrinho]);
+
     const gerenciarCarrinho = (id: number, opcao: number) => {
-        const url = `http://localhost:5000/api/updateCart?idUser=54&idProd=${id}&option=${opcao}`;
+        const url = `http://localhost:5000/api/updateCart?idUser=${user?.id}&idProd=${id}&option=${opcao}`;
 
         axios.post(url)
             .then(() => {
@@ -71,8 +102,22 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             });
     };
 
+    const checkout = () => {
+        if (user && carrinho.length > 0) {
+            axios.post("http://localhost:5000/api/checkout", { carrinho, userId: user.id })
+                .then((response) => {
+                    alert(response.data);
+                    setAtualizarCarrinho(prev => !prev);
+                })
+                .catch((err) => {
+                    console.error("Erro ao realizar pedido:", err);
+                    alert("Erro ao realizar o pedido. Tente novamente.");
+                });
+        }
+    };
+
     return (
-        <UserContext.Provider value={{ user, login, logout, carrinho, gerenciarCarrinho, setAtualizarCarrinho, atualizarCarrinho }}>
+        <UserContext.Provider value={{ user, carrinho, pedidos, atualizarCarrinho, login, logout, gerenciarCarrinho, setAtualizarCarrinho, checkout }}>
             {children}
         </UserContext.Provider>
     );

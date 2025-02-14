@@ -1,0 +1,74 @@
+.orderRowHolder,
+.orderRowHolderSelected {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+    box-shadow: 3px 3px 3px rgba(57, 55, 55, 0.309);
+    padding: 10px 30px 0 30px;
+    max-height: 30px;
+    border-radius: 5px;
+    width: 60%;
+    cursor: pointer;
+}
+
+.orderRowHolderSelected {
+    cursor: auto;
+    max-height: 100%;
+    transition: 0.3s ease;
+}
+
+.orderRowHolder:hover {
+    background-color: var(--highlight-color);
+}
+
+.orderRowHolder:hover h3,
+.orderRowHolder:hover b,
+.orderRowHolder:hover>* {
+    color: var(--secundary-color);
+}
+
+.orderRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(32, 32, 32, 0.224);
+}
+
+.orderRow:last-of-type {
+    border: none;
+}
+
+.orderRow img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.orderRow .orderInfo{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.orderRow .orderInfo:first-of-type{
+    width: 60%;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 1;
+}
+
+.info > h3 {
+    width: fit-content;
+    margin: 0;
+}

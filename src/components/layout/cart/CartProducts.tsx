@@ -1,10 +1,10 @@
 import styles from '../../styles/ShoppingCart.module.css'
 import CartProductRow from './CartProductRow'
-import { useCart } from '../../contexts/CartContext';
+import { useUser } from '../../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 function CartProducts() {
-    const { carrinho } = useCart();
+    const { carrinho } = useUser();
     const navigate = useNavigate();
 
     return (

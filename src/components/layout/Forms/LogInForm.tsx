@@ -1,9 +1,8 @@
 import styles from '../../styles/Forms.module.css';
 import InputsHolder from '../inputs/InputsHolder';
 import { useNavigate } from "react-router-dom";
-
+import { useUser } from '../../contexts/UserContext';
 import React, { useState } from "react";
-import axios from "axios";
 
 interface LoginFormProps {
     switch: () => void;
@@ -12,23 +11,16 @@ interface LoginFormProps {
 function LoginForm({ switch: handleSwitch }: LoginFormProps) {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-    const navigate = useNavigate();
+    const {login, user} = useUser()
+    const navigate = useNavigate()
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        axios
-            .post("http://localhost:5000/api/login", { email, senha })
-            .then(() => {
-                alert("Usuário encontrado com sucesso!");
-                setEmail("");
-                setSenha("");
-                navigate("/home");
-
-            })
-            .catch((error) => {
-                alert(`Erro ao logar. ${error}`);
-            });
+        login(email, senha)
+        if(user){
+            navigate('/home')
+        }
     };
 
 

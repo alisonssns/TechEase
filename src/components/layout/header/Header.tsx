@@ -4,11 +4,11 @@ import styles from '../../styles/Header.module.css'
 import SearchBar from './SearchBar'
 import { BiSolidHome as Home, BiSolidCart as Cart, BiMenu as Menu } from 'react-icons/bi'
 import HeaderMenu from './HeaderMenu';
-import { useCart } from '../../contexts/CartContext';
+import { useUser } from '../../contexts/UserContext';
 
 function Header() {
     const navigation = useNavigate();
-    const { carrinho } = useCart();
+    const { carrinho } = useUser();
     const [menuOpen, setMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement | null>(null);
     const iconRef = useRef<HTMLDivElement | null>(null); // Ref para o ícone do menu

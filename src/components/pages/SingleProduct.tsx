@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { Produto } from '../interfaces/Product';
 import { useLocation, useNavigate } from "react-router-dom";
-import { useCart } from '../contexts/CartContext';
+import { useUser } from '../contexts/UserContext';
 
 function SingleProduct() {
     const location = useLocation();
@@ -13,7 +13,7 @@ function SingleProduct() {
     const id = searchParams.get('id');
     const [produto, setProduto] = useState<Produto | null>(null);
     const [showDescription, setShowDescription] = useState(true);
-    const { gerenciarCarrinho } = useCart();
+    const { gerenciarCarrinho } = useUser();
     const navigate = useNavigate();
 
     useEffect(() => {

@@ -4,7 +4,7 @@
 }
 
 .profileNavBar {
-    background-color: #1F2120;
+    background-color: var(--primary-color);
     width: 200px;
     min-height: 400px;
     display: flex;
@@ -82,7 +82,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden    ;
     background-color: var(--secundary-color);
+    color: var(--primary-color);
     box-shadow: 3px 3px 3px rgba(57, 55, 55, 0.309);
     padding: 0 30px;
     border-radius: 5px;
@@ -104,14 +106,11 @@
     height: 56px;
     text-decoration: none;
     color: var(--primary-color);
+    border-top: 1px solid rgba(0, 0, 0, 0.092);
 }
 
 .linkRow:first-of-type{
     border: none;
-}
-
-.linkRow{
-    border-top: 1px solid rgba(0, 0, 0, 0.092);
 }
 
 .linkRow h3{

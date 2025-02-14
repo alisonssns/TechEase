@@ -1,22 +1,8 @@
-import axios from 'axios';
 import styles from '../../styles/ShoppingCart.module.css'
-import { useCart } from "../../contexts/CartContext"
+import { useUser } from "../../contexts/UserContext"
 
 function OrderDetails() {
-    const { carrinho, setAtualizarCarrinho, atualizarCarrinho } = useCart();
-
-    const checkout = () => {
-        axios.post("http://localhost:5000/api/checkout", { carrinho, userId: '54' })
-            .then((response) => {
-                alert(response.data);
-                setAtualizarCarrinho(!atualizarCarrinho);
-            })
-            .catch((err) => {
-                console.error("Erro ao realizar pedido:", err);
-                alert("Erro ao realizar o pedido. Tente novamente.");
-            });
-    };
-
+    const { checkout, carrinho } = useUser();
 
     return (
         <div className={styles.orderDetails}>

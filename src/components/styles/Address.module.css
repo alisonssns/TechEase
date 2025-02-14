@@ -1,7 +1,10 @@
 .adressForm {
     width: 100%;
     display: flex;
+    flex-direction: column;
     position: relative;
+    align-items: center;
+    gap: 2em;
 }
 
 .formSection {
@@ -9,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
 }
 
 .formSection::before {
@@ -39,7 +42,7 @@
 }
 
 .formHolder {
-    width: 90%;
+    width: var(--base-width);
     display: flex;
     flex-direction: column;
     padding: 50px 0;
@@ -111,7 +114,7 @@
 }
 
 .termsSection {
-    width: 50%;
+    width: var(--base-width);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,7 +125,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 100%;
 }
 
 .terms p{
