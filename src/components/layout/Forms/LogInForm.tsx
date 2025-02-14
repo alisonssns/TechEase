@@ -11,18 +11,26 @@ interface LoginFormProps {
 function LoginForm({ switch: handleSwitch }: LoginFormProps) {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-    const {login, user} = useUser()
-    const navigate = useNavigate()
+    const [error, setError] = useState(false);
+    const { login, user } = useUser();
+    const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        setError(false);
 
-        login(email, senha)
-        if(user){
-            navigate('/home')
+        try {
+            const success = await login(email, senha);
+            if (success) {
+                navigate('/home');
+            } else {
+                setTimeout(() => setError(true), 10);
+            }
+        } catch (err) {
+            setTimeout(() => setError(true), 10);
         }
     };
-
 
     const fields = [
         { type: 'email', name: 'email', placeholder: 'E-mail', value: email, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value) },
@@ -30,12 +38,13 @@ function LoginForm({ switch: handleSwitch }: LoginFormProps) {
     ];
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={error ? styles.error : ''}>
+            {error && <b className={styles.errorText}>Email ou senha inválidos</b>}
             <div className={styles.title}>{"Bem vindo de volta!"}</div>
-                <div className={styles.inputs}>
-                    <InputsHolder fields={fields} />
-                </div>
-                <input type="submit" value={"ENTRAR"} />
+            <div className={styles.inputs}>
+                <InputsHolder fields={fields} />
+            </div>
+            <input type="submit" value={"ENTRAR"} />
             <u onClick={handleSwitch}>Ainda <b>não</b> tem uma conta?</u>
         </form>
     );

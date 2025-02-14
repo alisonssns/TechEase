@@ -14,6 +14,7 @@ import ProfileSecurity from "./components/layout/profile/ProfileSecurity";
 import ProfileAddress from "./components/layout/profile/ProfileAddress";
 import ProfileOrders from "./components/layout/profile/ProfileOrders";
 import AddressForm from "./components/pages/AddressForm";
+import ProtectedRoute from "./components/pages/ProtectedRoute";
 
 function Layout() {
   const location = useLocation();
@@ -24,24 +25,25 @@ function Layout() {
       {!hideHeaderOnPaths.includes(location.pathname) && <Header />}
 
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/cart" element={<ShoppingCart />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/search" element={<SearchPage />} />
+      <Route path="/" element={<Navigate to="/login" />} />
 
-        <Route path="/profile" element={<ProfilePage />} >
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/search" element={<SearchPage />} />
+      <Route path="/singleProduct" element={<SingleProduct />} />
+
+      <Route element={<ProtectedRoute />}>
+        <Route path="/cart" element={<ShoppingCart />} />
+        <Route path="/profile" element={<ProfilePage />}>
           <Route index element={<ProfileInfo />} />
           <Route path="info" element={<ProfileInfo />} />
           <Route path="security" element={<ProfileSecurity />} />
           <Route path="address" element={<ProfileAddress />} />
           <Route path="orders" element={<ProfileOrders />} />
         </Route>
-
         <Route path="/adressform" element={<AddressForm />} />
-        <Route path="/singleProduct" element={<SingleProduct />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+      </Route>
+    </Routes>
 
       <Footer />
     </>

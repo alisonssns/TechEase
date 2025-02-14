@@ -33,7 +33,7 @@ function AddressForm() {
                 tipo,
             };
 
-            axios.post('http://localhost:5000/api/addressRegister', { newAddress, userId: user.id })
+            axios.post('http://localhost:5000/api/addressRegister', { newAddress, idUser: user.id })
                 .then(() => {
                     navigate('/profile')
                 })
@@ -94,7 +94,7 @@ function AddressForm() {
                         <input type="text" autoComplete="off" placeholder='CPF' minLength={14} maxLength={14} value={cpf} onChange={handleCpfChange} required />
                     </div>
                     <div className={styles.row_type_2}>
-                        <input type="text" autoComplete="off" placeholder='CEP' className={error ? styles.shake : ''} minLength={9} maxLength={9} value={cep} required onChange={handleCepChange} />
+                        <input type="text" autoComplete="off" placeholder='CEP' className={error ? 'shake' : ''} minLength={9} maxLength={9} value={cep} required onChange={handleCepChange} />
                         <input type="text" placeholder='Cidade' disabled value={end?.localidade ?? ""} required />
                     </div>
                     <input type="text" placeholder='Estado' disabled value={end?.uf ? `${end?.estado} (${end?.uf})` : ''} required />

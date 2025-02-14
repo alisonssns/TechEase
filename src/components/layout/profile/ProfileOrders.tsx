@@ -9,7 +9,7 @@ function ProfileOrders() {
 
     return (
         <>
-            <h3>Dados do Usuario</h3>
+            <h3>Seus Pedidos</h3>
             {pedidos.map((pedido, index) => (
                 <div className={selected === index ? styles.orderRowHolderSelected : styles.orderRowHolder} key={pedido.id} onClick={() => setSelected(index)}>
                     <div className={styles.info}>

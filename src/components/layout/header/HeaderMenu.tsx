@@ -25,7 +25,7 @@ function HeaderMenu() {
                 <FaPowerOff className={styles.menuImg} />
                 Ajuda
             </div>
-            <div onClick={() => logout}>
+            <div onClick={() => logout()}>
                 <FaQuestion className={styles.menuImg} />
                 Sair
             </div>

@@ -132,12 +132,12 @@ app.get('/api/orderProducts', (req, res) => {
 });
 
 app.post('/api/checkout', (req, res) => {
-  const { carrinho, userId } = req.body;
+  const { carrinho, idUser } = req.body;
 
   let query = "INSERT INTO pedidos (id_user, valor_total) values (?, ?)";
   const totalValue = carrinho.reduce((total, item) => total + (item.valor_prod * item.quantidade), 0);
 
-  db.query(query, [userId, totalValue], (err, result) => {
+  db.query(query, [idUser, totalValue], (err, result) => {
     if (err) {
       console.error(err);
       return res.status(500).send("Erro ao realizar pedido");
@@ -162,7 +162,7 @@ app.post('/api/checkout', (req, res) => {
 
     const cartQuery = "DELETE FROM carrinhousuario where id_user = ?";
 
-    db.query(cartQuery, [userId], (err) => {
+    db.query(cartQuery, [idUser], (err) => {
       if (err) {
         console.error(err);
       }
@@ -233,15 +233,15 @@ app.post("/api/login", (req, res) => {
 });
 
 app.post('/api/addressRegister', (req, res) => {
-  const { newAddress, userId } = req.body;
+  const { newAddress, idUser } = req.body;
   const addressQuery = "INSERT INTO enderecos (cep_end, uf_end, cidade_end, bairro_end, rua_end, num_end, comp_end, tipo_end, id_user) VALUES (?,?,?,?,?,?,?,?,?)"
-  db.query(addressQuery, [newAddress.cep, newAddress.uf, newAddress.localidade, newAddress.bairro, newAddress.logradouro, newAddress.numero, newAddress.complemento, newAddress.tipo, userId], (err, result) => {
+  db.query(addressQuery, [newAddress.cep, newAddress.uf, newAddress.localidade, newAddress.bairro, newAddress.logradouro, newAddress.numero, newAddress.complemento, newAddress.tipo, idUser], (err, result) => {
     if (err) {
       console.error(err);
       return res.status(500).send("Erro ao verificar a senha.");
     }
     const userQuery = `UPDATE usuarios SET cpf = ?, ddd = ?, telefone = ?, nomeCompleto = ? WHERE id = ?`;
-    db.query(userQuery, [newAddress.cpf, newAddress.ddd, newAddress.telefone, newAddress.nomeCompleto, userId], (err, result) => {
+    db.query(userQuery, [newAddress.cpf, newAddress.ddd, newAddress.telefone, newAddress.nomeCompleto, idUser], (err, result) => {
       if (err) {
         console.error(err);
         return res.status(500).send("Erro ao atualizar os dados do usuário.");
@@ -250,6 +250,17 @@ app.post('/api/addressRegister', (req, res) => {
     });
   });
 });
+
+app.get('/api/userInfo', (req, res) => {
+  const { idUser } = req.query
+  const query = "SELECT * FROM usuarios WHERE id_user = ?"
+  db.query(query, [idUser], (err, rs) => {
+    if (err) {
+      return res.status(500).send("Não encontradas informações")
+    }
+    res.json(rs)
+  })
+})
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

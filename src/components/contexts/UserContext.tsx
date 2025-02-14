@@ -25,7 +25,7 @@ interface UserContextType {
     user: User | null;
     carrinho: Produto[];
     pedidos: Pedido[];
-    login: (email: string, senha: string) => void;
+    login: (email: string, senha: string) => Promise<boolean>;
     logout: () => void;
     gerenciarCarrinho: (id: number, opcao: number) => void;
     setAtualizarCarrinho: (prev: boolean) => void;
@@ -55,17 +55,18 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             setUser(user);
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("token", token);
-
-        } catch (error) {
-            console.error("Erro ao fazer login:", error);
+            return true;
+        } catch (err) {
+            return false;
         }
-    }
+    };
 
     const logout = () => {
         setUser(null);
         setCarrinho([]);
         localStorage.removeItem("user");
         localStorage.removeItem("token");
+        window.location.reload()
     };
 
     useEffect(() => {
@@ -76,7 +77,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             .catch(error => {
                 console.error('Erro ao buscar dados:', error);
             });
-    }, [atualizarCarrinho]);
+    }, [atualizarCarrinho, user]);
 
     useEffect(() => {
         if (user?.id) {
@@ -104,7 +105,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     const checkout = () => {
         if (user && carrinho.length > 0) {
-            axios.post("http://localhost:5000/api/checkout", { carrinho, userId: user.id })
+            axios.post("http://localhost:5000/api/checkout", { carrinho, idUser: user.id })
                 .then((response) => {
                     alert(response.data);
                     setAtualizarCarrinho(prev => !prev);

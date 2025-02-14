@@ -11,6 +11,11 @@
     flex-direction: column;
     align-items: center;
     color: var(--primary-color);
+    position: relative;
+}
+
+.container .error .inputs input{
+    animation: shake 0.5s ease-in-out;
 }
 
 .container .title {
@@ -23,6 +28,11 @@
     align-items: center;
     width: 100%;
     margin-top: 30px;
+}
+
+.container .errorText{
+    position: absolute;
+    top: 5px;
 }
 
 .inputs {
@@ -91,3 +101,26 @@ u {
     margin-top: 0.5em;
 }
 
+@keyframes shake {
+    0% {
+        background-color: rgba(255, 0, 0, 0.13);
+        transform: translateX(0);
+    }
+
+    25% {
+        background-color: rgba(255, 0, 0, 0.304);
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
