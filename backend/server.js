@@ -218,7 +218,7 @@ app.post("/api/login", (req, res) => {
         return res.status(401).send("E-mail ou senha inválidos.");
       }
 
-      const SECRET_KEY = process.env.JWT_SECRET || "chave_padrao_segura";
+      const SECRET_KEY = "chave_padrao_segura";
       const token = jwt.sign(
         { id: usuario.id, email: usuario.email },
         SECRET_KEY,

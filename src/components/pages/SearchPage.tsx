@@ -13,7 +13,7 @@ function SearchPage() {
     const [order, setOrder] = useState(orderFilter || "");
     const navigate = useNavigate();
     const apply = () => {
-        navigate(`/search/${filter}/${order}`)
+        navigate(`/search/?filter=${filter}&orderFilter=${order}`)
     }
 
     return (
