@@ -9,19 +9,19 @@ function Categories() {
         <section className={styles.categories}>
             <h2>Descubra mais Produtos</h2>
             <section className={styles.categoriesHolder}>
-                <div className={styles.category_card} onClick={()=>navigate(`/search/Dispositivos/0`)}>
+                <div className={styles.category_card} onClick={()=>navigate('/search/?filter=Dispositivos&orderFilter=0')}>
                     <Computer />
                     Dispositivos
                 </div>
-                <div className={styles.category_card} onClick={()=>navigate(`/search/Monitores/0`)}>
+                <div className={styles.category_card} onClick={()=>navigate('/search/?filter=Monitores&orderFilter=0')}>
                     <Monitor />
                     Monitores
                 </div>
-                <div className={styles.category_card} onClick={()=>navigate(`/search/Acessorios/0`)}>
+                <div className={styles.category_card} onClick={()=>navigate('/search/?filter=Acessorios&orderFilter=0')}>
                     <Misc />
                     Acessorios
                 </div>
-                <div className={styles.category_card} onClick={()=>navigate(`/search/Hardware/0`)}>
+                <div className={styles.category_card} onClick={()=>navigate('/search/?filter=Hardware&orderFilter=0')}>
                     <Hardware />
                     Hardwares
                 </div>
