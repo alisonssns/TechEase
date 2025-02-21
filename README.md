@@ -5,9 +5,9 @@
 ## Sobre o projeto
 Este projeto surgiu durante o ensino médio técnico em informática, eu e um amigo(Vagner), precisavamos de uma ideia para um TCC e deveria ser apenas um site que tivesse conexão com o banco de dados, visto isso, passamos longos 8 meses desenvolvendo os designs, aprendendo mais sobre CSS, JS e MySQL e por fim acabamos com um resultado melhor do que o esperado. Dois anos depois, ao estudar mais sobre React e GitHub, resolvi recriar o projeto de uma forma mais "Profissional", com isso, fico muito feliz com o resultado final deste projeto e agregou em muito o meu conhecimento sobre a tecnologia, por fim, estarei disponibilizando o link do projeto antigo para a visualização:
 
-[Projeto Antigo](https://github.com/alisonssns/Site-E-Commerce-TCC)
-[Primeira Prototipação](https://marvelapp.com/project/6692998)
-[Documento TCC](https://docs.google.com/document/d/1SqLKsOpYGP1spy0KtiVy3Wc55bOlrBr5BXq_63PbwCs/edit?usp=sharing)
+- [Projeto Antigo](https://github.com/alisonssns/Site-E-Commerce-TCC)
+- [Primeira Prototipação](https://marvelapp.com/project/6692998)
+- [Documento TCC](https://docs.google.com/document/d/1SqLKsOpYGP1spy0KtiVy3Wc55bOlrBr5BXq_63PbwCs/edit?usp=sharing)
 
 ## Instalação
 
