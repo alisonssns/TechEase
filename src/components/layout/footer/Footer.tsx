@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from '../../styles/Footer.module.css';
 
 function Footer() {
@@ -11,19 +12,19 @@ function Footer() {
                 <div className={styles.column}>
                     <h2>Compras</h2>
                     <ul>
-                        <li>Computadores</li>
-                        <li>Acessórios</li>
-                        <li>Cadeiras</li>
-                        <li>Telas</li>
+                        <Link to={'/search/?filter=Pc&orderFilter=0'}><li>Computadores</li></Link>
+                        <Link to={'/search/?filter=Acessorios&orderFilter=0'}><li>Acessórios</li></Link>
+                        <Link to={'/search/?filter=Cadeira&orderFilter=0'}><li>Cadeiras</li></Link>
+                        <Link to={'/search/?filter=Monitor&orderFilter=0'}><li>Telas</li></Link>
                     </ul>
                 </div>
                 <div className={styles.column}>
                     <h2>Links</h2>
                     <ul>
-                        <li>Contate-nos</li>
-                        <li>Sobre nós</li>
-                        <li>Designs</li>
-                        <li>GitHub</li>
+                        <Link to={'https://w.app/8ktjox'} target="_blank" rel="noopener noreferrer"> <li>Contate-nos</li></Link>
+                        <Link to={'./aboutus'}><li>Sobre nós</li></Link>
+                        <Link to={''}><li>Designs</li></Link>
+                        <Link to={'https://github.com/alisonssns'} target="_blank" rel="noopener noreferrer">  <li>GitHub</li></Link>
                     </ul>
                 </div>
                 <div className={styles.column}>

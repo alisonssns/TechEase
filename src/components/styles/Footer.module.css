@@ -29,6 +29,11 @@ footer {
     margin: 5px 0;
 }
 
+.column ul a{
+    text-decoration: none;
+    color: unset;
+}
+
 .column ul li:hover {
     opacity: 1;
 }

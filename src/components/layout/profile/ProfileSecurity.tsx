@@ -15,8 +15,8 @@ function ProfileSecurity() {
             <div className={styles.rowHolder}>
                 <LinkRow name="E-mail" type='email' content={user?.email || "Não definido"} id={6} selected={selected ?? -1} onclick={(id) => setSelected(id)} />
                 <Link to="" className={styles.linkRow}>Alterar senha <FaArrowRight className={styles.arrow}/></Link>
-                <Link to="" className={styles.linkRow}>Contato ao Suporte <FaArrowRight className={styles.arrow}/></Link>
-                <Link to="" className={styles.linkRow} >Termos de Serviço <FaArrowRight className={styles.arrow}/></Link>
+                <Link to={'https://w.app/8ktjox'} target="_blank" rel="noopener noreferrer" className={styles.linkRow}>Contato ao Suporte <FaArrowRight className={styles.arrow}/></Link>
+                <Link to="" className={styles.linkRow}>Termos de Serviço <FaArrowRight className={styles.arrow}/></Link>
                 <Link to="" className={styles.linkRow}>Política de Privacidade <FaArrowRight className={styles.arrow}/></Link>
                 <Link to="" className={styles.linkRow}>Solicitar Exclusão de conta <FaArrowRight className={styles.arrow}/></Link>
             </div>
