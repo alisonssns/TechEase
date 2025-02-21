@@ -4,12 +4,12 @@ import { BiSearch as Search } from 'react-icons/bi'
 import { useState } from 'react'
 
 function SearchBar({type} : {type : string}) {
-    const navigation = useNavigate()
+    const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState('')
 
     const handleClick = () => {
         if (searchValue) {
-            navigation(`/search?filter=${searchValue}&orderFilter=0`)
+            navigate(`/search?filter=${searchValue}&orderFilter=0`)
             setSearchValue('')
         }
     }

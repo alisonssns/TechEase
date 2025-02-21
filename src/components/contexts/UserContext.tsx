@@ -1,17 +1,8 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import axios from "axios";
 import { Produto } from "../interfaces/Product";
-
-interface User {
-    id: number;
-    cpf: string;
-    nome: string;
-    email: string;
-    nomeCompleto: string;
-    apelido: string;
-    telefone: string;
-    token: string;
-}
+import { User } from "../interfaces/User";
+import { Address } from "../interfaces/Address";
 
 interface Pedido {
     id: number;
@@ -23,6 +14,7 @@ interface Pedido {
 
 interface UserContextType {
     user: User | null;
+    endereco: Address | null;
     carrinho: Produto[];
     pedidos: Pedido[];
     login: (email: string, senha: string) => Promise<boolean>;
@@ -30,6 +22,7 @@ interface UserContextType {
     gerenciarCarrinho: (id: number, opcao: number) => void;
     setAtualizarCarrinho: (prev: boolean) => void;
     checkout: () => void;
+    update: () => void;
     atualizarCarrinho: boolean;
 }
 
@@ -37,24 +30,33 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
+    const [endereco, setEndereco] = useState<Address | null>(null)
     const [carrinho, setCarrinho] = useState<Produto[]>([]);
     const [pedidos, setPedidos] = useState<Pedido[]>([]);
     const [atualizarCarrinho, setAtualizarCarrinho] = useState(false);
 
     useEffect(() => {
         const prevLogin = (localStorage.getItem("user"))
+        const userAddress = (localStorage.getItem("address"))
         if (prevLogin) {
             setUser(JSON.parse(prevLogin))
         }
-    }, [])
+        if (userAddress) {
+            setEndereco(JSON.parse(userAddress))
+        }
+    },[])
 
     const login = async (email: string, senha: string) => {
         try {
             const response = await axios.post('http://localhost:5000/api/login', { email, senha });
-            const { token, user } = response.data;
+            const { token, user, addressRs } = response.data;
             setUser(user);
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("token", token);
+            if(addressRs){
+                setEndereco(addressRs)
+                localStorage.setItem("address", JSON.stringify(addressRs));
+            }
             return true;
         } catch (err) {
             return false;
@@ -66,6 +68,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setCarrinho([]);
         localStorage.removeItem("user");
         localStorage.removeItem("token");
+        localStorage.removeItem("address");
         window.location.reload()
     };
 
@@ -117,8 +120,26 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
+    const update = async () => {
+        if (!user) return;
+
+        try {
+            const response = await axios.get(`http://localhost:5000/api/userInfo?idUser=${user.id}`);
+            const { userRs, addressRs } = response.data
+            setUser(userRs)
+            localStorage.setItem("user", JSON.stringify(userRs));
+            if(addressRs){
+                setEndereco(addressRs)
+                localStorage.setItem("address", JSON.stringify(addressRs));
+            }
+        } catch (error) {
+            console.error("Erro ao atualizar dados do usuário:", error);
+        }
+    };
+
+
     return (
-        <UserContext.Provider value={{ user, carrinho, pedidos, atualizarCarrinho, login, logout, gerenciarCarrinho, setAtualizarCarrinho, checkout }}>
+        <UserContext.Provider value={{ user, endereco, carrinho, pedidos, atualizarCarrinho, login, logout, update, gerenciarCarrinho, setAtualizarCarrinho, checkout }}>
             {children}
         </UserContext.Provider>
     );

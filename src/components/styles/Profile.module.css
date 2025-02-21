@@ -79,6 +79,7 @@
 }
 
 .rowHolder {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,10 +105,11 @@
     justify-content: space-between;
     width: 100%;
     height: 56px;
-    text-decoration: none;
     color: var(--primary-color);
+    text-decoration: none;
     border-top: 1px solid rgba(0, 0, 0, 0.092);
 }
+
 
 .linkRow:first-of-type{
     border: none;
@@ -121,17 +123,103 @@
 .linkRow p{
     opacity: 0.8;
     min-width: 300px;
+    cursor: pointer;
 }
 
-.linkRow .arrow, .linkRow .rotate{
+.linkRow .update{
+    opacity: 0.8;
+    font-size: 16px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.256);
+    min-width: 280px;
+    margin-right: 20px;
+}
+
+.linkRow .arrow, .linkRow .rotate, .linkRow .check{
     transition: 0.5s ease;
     font-size: 0.9em;
+    cursor: pointer;
 }
 
-.linkRow:hover > .rotate{
+.linkRow:hover .rotate{
     rotate: 360deg;
 }
 
-.linkRow:hover > .arrow{
+.linkRow:hover .arrow{
     transform: translateX(-10px);
+}
+
+.linkRow .check:hover{
+    color: rgb(24, 205, 24);
+}
+
+.linkRow > label{
+    display: flex;
+    align-items: center;
+}
+
+.userInfo{
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    color: white;
+    position: absolute;
+    background-color: var(--primary-color);
+}
+
+.userInfo b{
+    color: var(--secundary-color);
+    margin: 5px 30px;
+}
+
+.address {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.address div{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.address p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+    min-width: 40%;
+}
+
+.address b {
+    color: #007bff;
+}
+
+.address button{
+    width: 100%;
+    padding: 10px;
+    margin-top: 2rem;
+    background: #007bff;
+    color: var(--secundary-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.address button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.address button:active {
+    background: #004494;
+    transform: scale(0.98);
 }

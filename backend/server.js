@@ -196,6 +196,7 @@ app.post("/api/login", (req, res) => {
   const { email, senha } = req.body;
 
   const query = "SELECT * FROM usuarios WHERE email = ?";
+  const addressQuery = "SELECT * FROM enderecos WHERE id_user = ?";
   db.query(query, [email], (err, results) => {
     if (err) {
       console.error(err);
@@ -224,24 +225,47 @@ app.post("/api/login", (req, res) => {
         { expiresIn: "1h" }
       );
 
-      res.json({
-        token: token,
-        user: usuario
+      db.query(addressQuery, [usuario.id], (addressErr, address) => {
+        if (addressErr) {
+          return res.status(500).json({ error: "Erro ao buscar informações do endereço.", details: addressErr });
+        }
+        res.json({
+          token: token,
+          user: usuario,
+          addressRs: address.length > 0 ? address[0] : null
+        })
       });
     });
   });
 });
 
+app.post('/api/updateUser', (req, res) =>{
+  const {info, type, idUser} = req.body
+  if(!idUser){
+    return;
+  }
+
+  const query = `UPDATE usuarios SET ${type} = ? WHERE id = ?`
+  
+  db.query(query, [info, idUser], (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Erro ao atualizar os dados do usuário.");
+    }
+    res.status(200).send("Endereço cadastrado com sucesso.");
+  });
+})
+
 app.post('/api/addressRegister', (req, res) => {
   const { newAddress, idUser } = req.body;
-  const addressQuery = "INSERT INTO enderecos (cep_end, uf_end, cidade_end, bairro_end, rua_end, num_end, comp_end, tipo_end, id_user) VALUES (?,?,?,?,?,?,?,?,?)"
-  db.query(addressQuery, [newAddress.cep, newAddress.uf, newAddress.localidade, newAddress.bairro, newAddress.logradouro, newAddress.numero, newAddress.complemento, newAddress.tipo, idUser], (err, result) => {
+  const addressQuery = "INSERT INTO enderecos (cep, uf, localidade, bairro, logradouro, numero, complemento, tipo, estado, id_user) VALUES (?,?,?,?,?,?,?,?,?)"
+  db.query(addressQuery, [newAddress.cep, newAddress.uf, newAddress.localidade, newAddress.bairro, newAddress.logradouro, newAddress.numero, newAddress.complemento, newAddress.tipo, newAddress.estado, idUser], (err, result) => {
     if (err) {
       console.error(err);
       return res.status(500).send("Erro ao verificar a senha.");
     }
     const userQuery = `UPDATE usuarios SET cpf = ?, ddd = ?, telefone = ?, nomeCompleto = ? WHERE id = ?`;
-    db.query(userQuery, [newAddress.cpf, newAddress.ddd, newAddress.telefone, newAddress.nomeCompleto, idUser], (err, result) => {
+    db.query(userQuery, [newAddress.cpf, newAddress.ddd, newAddress.telefone, newAddress.nomeCompleto, idUser], (err) => {
       if (err) {
         console.error(err);
         return res.status(500).send("Erro ao atualizar os dados do usuário.");
@@ -251,16 +275,65 @@ app.post('/api/addressRegister', (req, res) => {
   });
 });
 
+app.post('/api/addressUpdate', (req, res) => {
+  const { newAddress, idUser } = req.body;
+  const addressQuery = `UPDATE enderecos SET cep = ?, uf = ?, localidade = ?, bairro = ?, logradouro = ?, numero = ?, complemento = ?, tipo = ?, estado = ? WHERE id_user = ?`;
+  db.query(addressQuery, [newAddress.cep, newAddress.uf, newAddress.localidade, newAddress.bairro, newAddress.logradouro, newAddress.numero, newAddress.complemento, newAddress.tipo, newAddress.estado, idUser], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Erro ao verificar a senha.");
+    }
+    res.status(200).send("Endereço cadastrado com sucesso.");
+  });
+});
+
 app.get('/api/userInfo', (req, res) => {
-  const { idUser } = req.query
-  const query = "SELECT * FROM usuarios WHERE id_user = ?"
+  const { idUser } = req.query;
+
+  if (!idUser) {
+    return res.status(400).json({ error: "ID do usuário não fornecido." });
+  }
+
+  const query = "SELECT * FROM usuarios WHERE id = ?";
+  const addressQuery = "SELECT * FROM enderecos WHERE id_user = ?";
+
   db.query(query, [idUser], (err, rs) => {
     if (err) {
-      return res.status(500).send("Não encontradas informações")
+      return res.status(500).json({ error: "Erro ao buscar informações do usuário.", details: err });
+    }
+
+    if (rs.length === 0) {
+      return res.status(404).json({ error: "Usuário não encontrado." });
+    }
+
+    db.query(addressQuery, [idUser], (addressErr, address) => {
+      if (addressErr) {
+        return res.status(500).json({ error: "Erro ao buscar informações do endereço.", details: addressErr });
+      }
+
+      res.json({
+        userRs: rs[0],
+        addressRs: address.length > 0 ? address[0] : null
+      });
+    });
+  });
+});
+
+
+app.get('/api/getQuestions', (req, res) => {
+  const query = "Select * FROM duvidas"
+  db.query(query, (err, rs) => {
+    if (err) {
+      return res.status(500).json({ error: "Erro ao buscar duvidas.", details: err });
+    }
+
+    if (rs.length === 0) {
+      return res.status(404).json({ error: "Duvidas não encontradas." });
     }
     res.json(rs)
   })
 })
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

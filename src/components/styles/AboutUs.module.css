@@ -1,0 +1,74 @@
+.aboutUs{
+    width: 80%;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 170px;
+}
+
+.aboutUs .about h1{
+    font-size: 3.3em;
+}
+
+.aboutUs div{
+    text-align: justify;
+    line-height: 1.2em;
+}
+
+.aboutUs .about{
+    align-self: flex-end;
+    width: 60%;
+}
+
+.aboutUs .phrase{
+    line-height: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+}
+
+.phrase > h2, .phrase > i{
+    width: 100%;
+}
+
+.quotes{
+    width: 107%;
+    top: -10px;
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+}
+
+.info{
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.info > div{
+    width: 45%;
+}
+
+.info .images{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.info .img{
+    width: 250px;
+    height: 250px;
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 4px;
+
+}

@@ -7,10 +7,10 @@ import { useUser } from '../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 
 function AddressForm() {
-    const { user } = useUser()
+    const { user, endereco, update } = useUser()
     const [cep, setCep] = useState('');
-    const [cpf, setCpf] = useState('');
-    const [nomeCompleto, setNomeCompleto] = useState('');
+    const [cpf, setCpf] = useState(user?.cpf || '');
+    const [nomeCompleto, setNomeCompleto] = useState(user?.nomeCompleto || '');
     const [complemento, setComplemento] = useState('');
     const [tipo, setTipo] = useState('');
     const [error, setError] = useState('');
@@ -33,8 +33,11 @@ function AddressForm() {
                 tipo,
             };
 
-            axios.post('http://localhost:5000/api/addressRegister', { newAddress, idUser: user.id })
+            const url = endereco ? "http://localhost:5000/api/addressUpdate" : "http://localhost:5000/api/addressRegister";
+
+            axios.post((url), { newAddress, idUser: user.id })
                 .then(() => {
+                    update()
                     navigate('/profile')
                 })
                 .catch(error => {
@@ -84,41 +87,42 @@ function AddressForm() {
     }, [cep]);
 
     return (
-        <form className={styles.adressForm} onSubmit={handleSubmit}>
+        <form className={styles.addressForm} onSubmit={handleSubmit}>
             <div className={styles.formSection}>
                 <div className={styles.formHolder}>
                     <h2>Adicione um endereço</h2>
 
-                    <div className={styles.row_type_1}>
+                    {!endereco && <div className={styles.row_type_1}>
                         <input type="text" autoComplete="off" placeholder='Nome Completo' required value={nomeCompleto} onChange={(e) => setNomeCompleto(e.target.value)} />
                         <input type="text" autoComplete="off" placeholder='CPF' minLength={14} maxLength={14} value={cpf} onChange={handleCpfChange} required />
-                    </div>
+                    </div>}
                     <div className={styles.row_type_2}>
                         <input type="text" autoComplete="off" placeholder='CEP' className={error ? 'shake' : ''} minLength={9} maxLength={9} value={cep} required onChange={handleCepChange} />
-                        <input type="text" placeholder='Cidade' disabled value={end?.localidade ?? ""} required />
+                        <input type="text" placeholder='Cidade' className={styles.disabled} value={end?.localidade ?? ""} required />
                     </div>
-                    <input type="text" placeholder='Estado' disabled value={end?.uf ? `${end?.estado} (${end?.uf})` : ''} required />
-                    <input type="text" placeholder='Bairro' disabled value={end?.bairro ?? ""} required />
+                    <input type="text" placeholder='Estado' className={styles.disabled} value={end?.uf ? `${end?.estado} (${end?.uf})` : ''} required />
+                    <input type="text" placeholder='Bairro' className={styles.disabled} value={end?.bairro ?? ""} required />
                     <div className={styles.row_type_1}>
-                        <input type="text" placeholder='Rua/Avenida' disabled value={end?.logradouro ?? ""} required />
+                        <input type="text" placeholder='Rua/Avenida' className={styles.disabled} value={end?.logradouro ?? ""} required />
                         <input type="number" placeholder='Numero' onChange={(e) => setNumber(e.target.value)} required />
                     </div>
                     <div className={styles.row_type_1}>
                         <input type="text" placeholder='Complemento (Opcional)' value={complemento} onChange={(e) => setComplemento(e.target.value)} />
-                        <div className={styles.row_type_2}>
-                            <input type="text" placeholder='DDD' maxLength={2} disabled value={end?.ddd ?? ""} style={{ textAlign: 'center', textIndent: '0' }} required />
+                        {!endereco && <div className={styles.row_type_2}>
+                            <input type="text" placeholder='DDD' maxLength={2} className={styles.disabled} value={end?.ddd ?? ""} style={{ textAlign: 'center', textIndent: '0' }} required />
                             <input type="text" autoComplete="off" placeholder='Telefone' value={telefone} minLength={9} maxLength={10} onChange={handleNumberChange} required />
-                        </div>
+                        </div>}
                     </div>
                     <div className={styles.addressType}>
                         <label><input type="radio" name="type" className='hide' required onChange={() => setTipo('Casa')} />Casa</label>
                         <label><input type="radio" name="type" className='hide' required onChange={() => setTipo('Trabalho')} />Trabalho</label>
                     </div>
+                {endereco && <input type="submit" value="Atualizar" className='input1'/>}
                 </div>
             </div>
-            <div className={styles.termsSection}>
+            {!endereco && <div className={styles.termsSection}>
                 <Terms />
-            </div>
+            </div>}
         </form>
     );
 }

@@ -3,14 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Produto } from '../../interfaces/Product';
 
 function ProductCard({ produto }: {produto : Produto}) {
-    const Navigation = useNavigate();   
-
-    const handleClick = (name : string, id: number) => {
-        Navigation(`/SingleProduct?nome=${name}&id=${id}`)
-    }
+    const navigate = useNavigate();   
 
     return (
-        <div className={styles.productCard} onClick={()=> handleClick(produto.nome_prod, produto.id_prod)}>
+        <div className={styles.productCard} onClick={()=> navigate(`/SingleProduct?nome=${produto.nome_prod}&id=${produto.id_prod})`)}>
             <figure className={styles.imageContainer}>
                 <img src={`/products/${produto.img_prod}`} alt={produto.nome_prod} className={styles.productImage} />
             </figure>

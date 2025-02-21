@@ -6,7 +6,7 @@ export interface Address {
     uf: string;
     estado: string;
     ddd: number;
-    numero: number;
+    numero  : number;
     nomeCompleto? : string;
     cpf? : string;
     complemento? : string;

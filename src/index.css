@@ -54,6 +54,17 @@ input[type="submit"] {
   margin-top: 20px;
 }
 
+.input1{
+  width: 250px  !important;
+  height: 40px !important;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  transition: 0.5s ease;
+}
+
 .input2{
   color: var(--primary-color) !important;
   background-color: var(--secundary-color) !important;
@@ -62,7 +73,7 @@ input[type="submit"] {
   margin-top: 40px  !important;
 }
 
-.input2:hover{
+.input2:hover, .input1:hover{
   opacity: 1;
 }
 

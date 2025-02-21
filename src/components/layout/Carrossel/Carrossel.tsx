@@ -11,11 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Carrossel() {
     const [Produtos, setProdutos] = useState<Produto[]>([]);
-    const Navigation = useNavigate();
-
-    const handleClick = (name: string, id: number) => {
-        Navigation(`/SingleProduct?nome=${name}&id=${id}`)
-    }
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get<Produto[]>('http://localhost:5000/api/produtos/?order=4&limit=5')
@@ -43,7 +39,7 @@ function Carrossel() {
                 {Produtos.map((produto) => (
                     <div key={produto.id_prod}>
                         <div className={styles.slider}>
-                            <img onClick={() => handleClick(produto.nome_prod, produto.id_prod)}
+                            <img onClick={() => navigate(`/SingleProduct?nome=${produto.nome_prod}&id=${produto.id_prod})`)}
                                 src={`/products/${produto.img_prod}`}
                                 alt={`Imagem do produto ${produto.nome_prod}`}
                             />

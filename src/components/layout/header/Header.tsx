@@ -7,15 +7,11 @@ import HeaderMenu from './HeaderMenu';
 import { useUser } from '../../contexts/UserContext';
 
 function Header() {
-    const navigation = useNavigate();
+    const navigate = useNavigate();
     const { carrinho } = useUser();
     const [menuOpen, setMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement | null>(null);
     const iconRef = useRef<HTMLDivElement | null>(null); // Ref para o ícone do menu
-
-    const handleClick = (route: string) => {
-        navigation(route);
-    };
 
     const toggleMenu = () => {
         setMenuOpen((prev) => !prev);
@@ -43,11 +39,11 @@ function Header() {
     return (
         <header>
             <section>
-                <h2 onClick={() => handleClick('/home')}>TechEase</h2>
+                <h2 onClick={() => navigate('/home')}>TechEase</h2>
                 <SearchBar type='headerSearch' />
                 <div className={styles.links}>
-                    <Home onClick={() => handleClick('/home')} />
-                    <label className={styles.cart} onClick={() => handleClick('/cart')}>
+                    <Home onClick={() => navigate('/home')} />
+                    <label className={styles.cart} onClick={() => navigate('/cart')}>
                         <Cart />
                         {carrinho.length > 0 && <b>+{carrinho.length}</b>}
                     </label>

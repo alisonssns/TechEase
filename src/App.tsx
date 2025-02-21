@@ -5,7 +5,6 @@ import LoginPage from "./components/pages/LoginPage";
 import SingleProduct from "./components/pages/SingleProduct";
 import Header from "./components/layout/header/Header";
 import Footer from "./components/layout/footer/Footer";
-import PageNotFound from "./components/pages/PageNotFound";
 import SearchPage from "./components/pages/SearchPage";
 import ShoppingCart from "./components/pages/ShoppingCart";
 import ProfilePage from "./components/pages/ProfilePage";
@@ -15,6 +14,8 @@ import ProfileAddress from "./components/layout/profile/ProfileAddress";
 import ProfileOrders from "./components/layout/profile/ProfileOrders";
 import AddressForm from "./components/pages/AddressForm";
 import ProtectedRoute from "./components/pages/ProtectedRoute";
+import AboutUs from "./components/pages/AboutUs";
+import Help from "./components/pages/Help";
 
 function Layout() {
   const location = useLocation();
@@ -31,6 +32,8 @@ function Layout() {
       <Route path="/home" element={<Home />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/singleProduct" element={<SingleProduct />} />
+      <Route path="/aboutus" element={<AboutUs />} />
+      <Route path="/help" element={<Help />} />
 
       <Route element={<ProtectedRoute />}>
         <Route path="/cart" element={<ShoppingCart />} />
@@ -41,10 +44,9 @@ function Layout() {
           <Route path="address" element={<ProfileAddress />} />
           <Route path="orders" element={<ProfileOrders />} />
         </Route>
-        <Route path="/adressform" element={<AddressForm />} />
+        <Route path="/addressform" element={<AddressForm />} />
       </Route>
     </Routes>
-
       <Footer />
     </>
   );
