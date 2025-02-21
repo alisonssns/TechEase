@@ -98,18 +98,18 @@ function AddressForm() {
                     </div>}
                     <div className={styles.row_type_2}>
                         <input type="text" autoComplete="off" placeholder='CEP' className={error ? 'shake' : ''} minLength={9} maxLength={9} value={cep} required onChange={handleCepChange} />
-                        <input type="text" placeholder='Cidade' className={styles.disabled} value={end?.localidade ?? ""} required />
+                        <input type="text" placeholder='Cidade' readOnly className={styles.disabled} value={end?.localidade ?? ""} required />
                     </div>
-                    <input type="text" placeholder='Estado' className={styles.disabled} value={end?.uf ? `${end?.estado} (${end?.uf})` : ''} required />
-                    <input type="text" placeholder='Bairro' className={styles.disabled} value={end?.bairro ?? ""} required />
+                    <input type="text" placeholder='Estado' readOnly className={styles.disabled} value={end?.uf ? `${end?.estado} (${end?.uf})` : ''} required />
+                    <input type="text" placeholder='Bairro' readOnly className={styles.disabled} value={end?.bairro ?? ""} required />
                     <div className={styles.row_type_1}>
-                        <input type="text" placeholder='Rua/Avenida' className={styles.disabled} value={end?.logradouro ?? ""} required />
+                        <input type="text" placeholder='Rua/Avenida' readOnly className={styles.disabled} value={end?.logradouro ?? ""} required />
                         <input type="number" placeholder='Numero' onChange={(e) => setNumber(e.target.value)} required />
                     </div>
                     <div className={styles.row_type_1}>
                         <input type="text" placeholder='Complemento (Opcional)' value={complemento} onChange={(e) => setComplemento(e.target.value)} />
                         {!endereco && <div className={styles.row_type_2}>
-                            <input type="text" placeholder='DDD' maxLength={2} className={styles.disabled} value={end?.ddd ?? ""} style={{ textAlign: 'center', textIndent: '0' }} required />
+                            <input type="text" placeholder='DDD' maxLength={2} readOnly className={styles.disabled} value={end?.ddd ?? ""} style={{ textAlign: 'center', textIndent: '0' }} required />
                             <input type="text" autoComplete="off" placeholder='Telefone' value={telefone} minLength={9} maxLength={10} onChange={handleNumberChange} required />
                         </div>}
                     </div>

@@ -258,7 +258,7 @@ app.post('/api/updateUser', (req, res) =>{
 
 app.post('/api/addressRegister', (req, res) => {
   const { newAddress, idUser } = req.body;
-  const addressQuery = "INSERT INTO enderecos (cep, uf, localidade, bairro, logradouro, numero, complemento, tipo, estado, id_user) VALUES (?,?,?,?,?,?,?,?,?)"
+  const addressQuery = "INSERT INTO enderecos (cep, uf, localidade, bairro, logradouro, numero, complemento, tipo, estado, id_user) VALUES (?,?,?,?,?,?,?,?,?,?)"
   db.query(addressQuery, [newAddress.cep, newAddress.uf, newAddress.localidade, newAddress.bairro, newAddress.logradouro, newAddress.numero, newAddress.complemento, newAddress.tipo, newAddress.estado, idUser], (err, result) => {
     if (err) {
       console.error(err);
