@@ -1,5 +1,3 @@
-# TechEase
-
 ![TechEase](https://github.com/user-attachments/assets/66578ec8-4171-4a6e-b227-bc543e2accdb)
 
 ## Tabela de Conteúdos
