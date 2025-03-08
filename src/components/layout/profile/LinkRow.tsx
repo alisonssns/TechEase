@@ -15,7 +15,7 @@ interface linkRowInterface {
     onclick: (id: number) => void;
 }
 
-function LinkRow({ id, type, name, min, max, content, selected, onclick }: linkRowInterface) {
+export default function LinkRow({ id, type, name, min, max, content, selected, onclick }: linkRowInterface) {
     const inputRef = useRef<HTMLInputElement>(null);
     const { user, update } = useUser()
     const [updateInfo, setUpdateInfo] = useState("")
@@ -68,5 +68,3 @@ function LinkRow({ id, type, name, min, max, content, selected, onclick }: linkR
         </form>
     );
 }
-
-export default LinkRow;

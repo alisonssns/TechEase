@@ -4,7 +4,7 @@ import { Produto } from "../../interfaces/Product";
 import ProductCard from "../products/ProductCard";
 import styles from "../../styles/Products.module.css"
 
-function Recomendations() {
+export default function Recomendations() {
     const [Produtos, setProdutos] = useState<Produto[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -40,5 +40,3 @@ function Recomendations() {
         </section >
     );
 }
-
-export default Recomendations

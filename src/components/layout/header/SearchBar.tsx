@@ -3,7 +3,7 @@ import styles from '../../styles/SearchBar.module.css'
 import { BiSearch as Search } from 'react-icons/bi'
 import { useState } from 'react'
 
-function SearchBar({type} : {type : string}) {
+export default function SearchBar({type} : {type : string}) {
     const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState('')
 
@@ -29,5 +29,3 @@ function SearchBar({type} : {type : string}) {
         </form>
     )
 }
-
-export default SearchBar

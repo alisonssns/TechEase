@@ -5,7 +5,7 @@ import { Produto } from '../interfaces/Product';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from '../contexts/UserContext';
 
-function SingleProduct() {
+export default function SingleProduct() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
 
@@ -65,5 +65,3 @@ function SingleProduct() {
         </section>
     );
 }
-
-export default SingleProduct;

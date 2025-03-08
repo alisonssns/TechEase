@@ -3,7 +3,7 @@ import { useUser } from '../../contexts/UserContext'
 import styles from '../../styles/Profile.module.css'
 import LinkRow from './LinkRow'
 
-function ProfileInfo() {
+export default function ProfileInfo() {
     const { user } = useUser()
     const [selected, setSelected] = useState<number>()
 
@@ -23,5 +23,3 @@ function ProfileInfo() {
         </>
     )
 }
-
-export default ProfileInfo

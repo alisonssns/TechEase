@@ -9,7 +9,7 @@ interface Duvida {
     resposta: string;
 }
 
-function Help() {
+export default function Help() {
     const [duvidas, setDuvidas] = useState<Duvida[]>([])
     const [selected, setSelected] = useState<Number>()
 
@@ -37,5 +37,3 @@ function Help() {
         </section>
     )
 }
-
-export default Help

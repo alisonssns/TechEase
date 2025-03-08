@@ -4,7 +4,7 @@ import { FaXmark as Remove } from 'react-icons/fa6';
 import { Produto } from '../../interfaces/Product';
 import { useUser } from '../../contexts/UserContext';
 
-function CartProductRow({ produto }: { produto: Produto }) {
+export default function CartProductRow({ produto }: { produto: Produto }) {
     const { gerenciarCarrinho } = useUser();
 
     return (
@@ -26,5 +26,3 @@ function CartProductRow({ produto }: { produto: Produto }) {
         </div >
     )
 }
-
-export default CartProductRow

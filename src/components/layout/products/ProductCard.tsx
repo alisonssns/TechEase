@@ -2,7 +2,7 @@ import styles from '../../styles/Products.module.css'
 import { useNavigate } from "react-router-dom";
 import { Produto } from '../../interfaces/Product';
 
-function ProductCard({ produto }: {produto : Produto}) {
+export default function ProductCard({ produto }: {produto : Produto}) {
     const navigate = useNavigate();   
 
     return (
@@ -20,5 +20,3 @@ function ProductCard({ produto }: {produto : Produto}) {
         </div>
     )
 }
-
-export default ProductCard;

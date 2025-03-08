@@ -6,7 +6,7 @@ import { BiSolidHome as Home, BiSolidCart as Cart, BiMenu as Menu } from 'react-
 import HeaderMenu from './HeaderMenu';
 import { useUser } from '../../contexts/UserContext';
 
-function Header() {
+export default function Header() {
     const navigate = useNavigate();
     const { carrinho } = useUser();
     const [menuOpen, setMenuOpen] = useState(false);
@@ -60,5 +60,3 @@ function Header() {
         </header>
     );
 }
-
-export default Header;

@@ -3,7 +3,7 @@ import { useState } from "react";
 import ProductsHolder from "../layout/products/ProductsHolder";
 import styles from "../styles/SearchPage.module.css";
 
-function SearchPage() {
+export default function SearchPage() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
 
@@ -42,5 +42,3 @@ function SearchPage() {
         </section>
     );
 }
-
-export default SearchPage;

@@ -8,7 +8,7 @@ interface LoginFormProps {
     switch: () => void;
 }
 
-function LoginForm({ switch: handleSwitch }: LoginFormProps) {
+export default function LoginForm({ switch: handleSwitch }: LoginFormProps) {
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -47,5 +47,3 @@ function LoginForm({ switch: handleSwitch }: LoginFormProps) {
         </form>
     );
 }
-
-export default LoginForm;

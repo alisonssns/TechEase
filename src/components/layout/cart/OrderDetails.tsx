@@ -1,7 +1,7 @@
 import styles from '../../styles/ShoppingCart.module.css'
 import { useUser } from "../../contexts/UserContext"
 
-function OrderDetails() {
+export default function OrderDetails() {
     const { checkout, carrinho } = useUser();
 
     return (
@@ -36,5 +36,3 @@ function OrderDetails() {
         </div>
     )
 }
-
-export default OrderDetails

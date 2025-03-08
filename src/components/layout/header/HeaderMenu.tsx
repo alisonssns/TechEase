@@ -3,7 +3,7 @@ import styles from '../../styles/Header.module.css'
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
 
-function HeaderMenu() {
+export default function HeaderMenu() {
     const { logout } = useUser()
     const navigate = useNavigate()
 
@@ -29,5 +29,3 @@ function HeaderMenu() {
 
     )
 }
-
-export default HeaderMenu;

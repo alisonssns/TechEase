@@ -5,7 +5,7 @@ import Categories from '../layout/products/Categories';
 import styles from '../styles/Home.module.css'
 import { useParams } from 'react-router-dom';
 
-function Home() {
+export default function Home() {
     const { filter } = useParams();
 
     return (
@@ -26,5 +26,3 @@ function Home() {
         </div>
     )
 }
-
-export default Home;

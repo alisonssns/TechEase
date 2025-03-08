@@ -3,7 +3,7 @@ import CartProductRow from './CartProductRow'
 import { useUser } from '../../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
 
-function CartProducts() {
+export default function CartProducts() {
     const { carrinho } = useUser();
     const navigate = useNavigate();
 
@@ -25,5 +25,3 @@ function CartProducts() {
         </div>
     )
 }
-
-export default CartProducts

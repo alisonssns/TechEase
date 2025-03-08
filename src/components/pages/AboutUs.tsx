@@ -1,7 +1,7 @@
 import { FaQuoteLeft as Left, FaQuoteRight as Right } from 'react-icons/fa6'
 import styles from '../styles/AboutUs.module.css'
 
-function AboutUs() {
+export default function AboutUs() {
     return (
         <section className={styles.aboutUs}>
             <div className={styles.about}>
@@ -32,5 +32,3 @@ function AboutUs() {
         </section>
     )
 }
-
-export default AboutUs

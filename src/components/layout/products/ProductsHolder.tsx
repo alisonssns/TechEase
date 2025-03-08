@@ -11,7 +11,7 @@ interface ProductsHolderProps {
     onUpdateResults?: (count: number) => void;
 }
 
-function ProductsHolder({ filter, order, limit, onUpdateResults }: ProductsHolderProps) {
+export default function ProductsHolder({ filter, order, limit, onUpdateResults }: ProductsHolderProps) {
     const [produtos, setProdutos] = useState<Produto[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -53,5 +53,3 @@ function ProductsHolder({ filter, order, limit, onUpdateResults }: ProductsHolde
         </section>
     );
 }
-
-export default ProductsHolder;

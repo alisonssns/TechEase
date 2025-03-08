@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Produto } from '../../interfaces/Product'
 import styles from '../../styles/Orders.module.css'
 
-function Orders({ orderId }: { orderId?: number }) {
+export default function Orders({ orderId }: { orderId?: number }) {
     const [produtos, setProdutos] = useState<Produto[]>([])
 
     useEffect(() => {
@@ -35,5 +35,3 @@ function Orders({ orderId }: { orderId?: number }) {
         </>
     )
 }
-
-export default Orders

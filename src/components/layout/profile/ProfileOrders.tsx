@@ -3,7 +3,7 @@ import { useUser } from '../../contexts/UserContext'
 import styles from '../../styles/Orders.module.css'
 import Orders from '../orders/Orders'
 
-function ProfileOrders() {
+export default function ProfileOrders() {
     const { pedidos } = useUser()
     const [selected , setSelected] = useState<Number>()
 
@@ -24,5 +24,3 @@ function ProfileOrders() {
         </>
     )
 }
-
-export default ProfileOrders

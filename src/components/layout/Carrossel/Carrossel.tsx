@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from 'react-router-dom';
 
-function Carrossel() {
+export default function Carrossel() {
     const [Produtos, setProdutos] = useState<Produto[]>([]);
     const navigate = useNavigate();
 
@@ -60,5 +60,3 @@ function Carrossel() {
         </div>
     );
 }
-
-export default Carrossel;

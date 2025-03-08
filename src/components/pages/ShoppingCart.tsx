@@ -3,7 +3,7 @@ import Recomendations from '../layout/cart/Recomendations'
 import OrderDetails from '../layout/cart/OrderDetails'
 import styles from '../styles/ShoppingCart.module.css'
 
-function ShoppingCart() {
+export default function ShoppingCart() {
     return (
         <section className={styles.shoppingCart}>
             <div className={styles.cartHolder}>
@@ -14,5 +14,3 @@ function ShoppingCart() {
         </section>
     )
 }
-
-export default ShoppingCart

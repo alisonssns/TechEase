@@ -6,7 +6,7 @@ import Terms from '../layout/forms/Terms'
 import { useUser } from '../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 
-function AddressForm() {
+export default function AddressForm() {
     const { user, endereco, update } = useUser()
     const [cep, setCep] = useState('');
     const [cpf, setCpf] = useState(user?.cpf || '');
@@ -126,5 +126,3 @@ function AddressForm() {
         </form>
     );
 }
-
-export default AddressForm

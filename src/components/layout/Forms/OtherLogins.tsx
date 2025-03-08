@@ -1,7 +1,7 @@
 import { BsFacebook as Facebook, BsGoogle as Google } from "react-icons/bs"
 import styles from "../../styles/OtherLogins.module.css";
 
-function OtherLogins() {
+export default function OtherLogins() {
     return (
         <div className={styles.card}>
             <div className={styles.title}>Ou continue com</div>
@@ -12,5 +12,3 @@ function OtherLogins() {
         </div>
     )
 }
-
-export default OtherLogins

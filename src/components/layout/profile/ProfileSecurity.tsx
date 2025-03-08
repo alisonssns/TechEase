@@ -5,7 +5,7 @@ import styles from '../../styles/Profile.module.css'
 import LinkRow from './LinkRow'
 import { Link } from 'react-router-dom'
 
-function ProfileSecurity() {
+export default function ProfileSecurity() {
     const { user } = useUser()
     const [selected, setSelected] = useState<number>()
 
@@ -23,5 +23,3 @@ function ProfileSecurity() {
         </>
     )
 }
-
-export default ProfileSecurity

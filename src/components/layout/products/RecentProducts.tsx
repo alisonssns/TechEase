@@ -4,7 +4,7 @@ import { Produto } from '../../interfaces/Product';
 import ProductCard from './ProductCard';
 import styles from '../../styles/Products.module.css'
 
-function Produtos() {
+export default function Produtos() {
   const [Produtos, setProdutos] = useState<Produto[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -35,5 +35,3 @@ function Produtos() {
     </section>
   );
 }
-
-export default Produtos;

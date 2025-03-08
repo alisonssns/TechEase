@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import styles from '../../styles/Categories.module.css'
 import { FaComputerMouse as Computer, FaTv as Monitor, FaMicrochip as Misc, FaHardDrive as Hardware } from 'react-icons/fa6'
 
-function Categories() {
+export default function Categories() {
     const navigate = useNavigate();
 
     return (
@@ -29,5 +29,3 @@ function Categories() {
         </section>
     )
 }
-
-export default Categories

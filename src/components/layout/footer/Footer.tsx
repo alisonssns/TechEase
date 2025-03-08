@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from '../../styles/Footer.module.css';
 
-function Footer() {
+export default function Footer() {
     return (
         <footer>
             <div className={styles.topSection}>
@@ -38,5 +38,3 @@ function Footer() {
         </footer>
     );
 }
-
-export default Footer;

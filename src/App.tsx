@@ -16,6 +16,7 @@ import AddressForm from "./components/pages/AddressForm";
 import ProtectedRoute from "./components/pages/ProtectedRoute";
 import AboutUs from "./components/pages/AboutUs";
 import Help from "./components/pages/Help";
+import { AdminDashboard } from "./components/pages/AdminDashboard";
 
 function Layout() {
   const location = useLocation();
@@ -35,8 +36,11 @@ function Layout() {
       <Route path="/aboutus" element={<AboutUs />} />
       <Route path="/help" element={<Help />} />
 
+      <Route path="/admin-dashboard-x7a9b3f2z" element={<AdminDashboard />} />
+
       <Route element={<ProtectedRoute />}>
         <Route path="/cart" element={<ShoppingCart />} />
+        <Route path="/addressform" element={<AddressForm />} />
         <Route path="/profile" element={<ProfilePage />}>
           <Route index element={<ProfileInfo />} />
           <Route path="info" element={<ProfileInfo />} />
@@ -44,7 +48,6 @@ function Layout() {
           <Route path="address" element={<ProfileAddress />} />
           <Route path="orders" element={<ProfileOrders />} />
         </Route>
-        <Route path="/addressform" element={<AddressForm />} />
       </Route>
     </Routes>
       <Footer />
@@ -52,12 +55,10 @@ function Layout() {
   );
 }
 
-function App() {
+export function App() {
   return (
     <Router>
       <Layout />
     </Router>
   );
 }
-
-export default App;

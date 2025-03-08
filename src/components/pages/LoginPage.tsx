@@ -4,7 +4,7 @@ import LoginForm from "../layout/forms/LogInForm";
 import styles from '../styles/Forms.module.css'
 import { useState } from "react";
 
-function LoginPage() {
+export default function LoginPage() {
     const [isLogin, setIsLogin] = useState(false);
 
     const handleSwitch = () => {
@@ -19,4 +19,3 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;

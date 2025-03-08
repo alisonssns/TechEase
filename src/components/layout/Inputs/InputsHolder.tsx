@@ -9,7 +9,7 @@ interface InputFieldProps {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function InputsHolder({ fields }: { fields: InputFieldProps[] }) {
+export default function InputsHolder({ fields }: { fields: InputFieldProps[] }) {
     return (
         <>
             {fields.map((field) => (
@@ -29,5 +29,3 @@ function InputsHolder({ fields }: { fields: InputFieldProps[] }) {
         </>
     );
 }
-
-export default InputsHolder;

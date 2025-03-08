@@ -3,7 +3,7 @@ import { FaUser as User, FaLock as Lock, FaMapLocation as Address, FaCartShoppin
 import styles from '../styles/Profile.module.css'
 import { useEffect, useState } from 'react'
 
-function ProfilePage() {
+export default function ProfilePage() {
     const path = window.location.pathname;
     const [selected, setSelected] = useState('')
 
@@ -27,5 +27,3 @@ function ProfilePage() {
         </section>
     )
 }
-
-export default ProfilePage

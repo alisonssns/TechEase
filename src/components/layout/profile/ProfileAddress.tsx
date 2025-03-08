@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styles from '../../styles/Profile.module.css'
 import { useUser } from '../../contexts/UserContext'
 
-function ProfileAddress() {
+export default function ProfileAddress() {
     const { endereco, user } = useUser()
 
     return (<>
@@ -39,5 +39,3 @@ function ProfileAddress() {
     </>
     )
 }
-
-export default ProfileAddress

@@ -1,6 +1,6 @@
 import styles from '../../styles/Address.module.css'
 
-function Terms() {
+export default function Terms() {
     return (
         <div className={styles.terms}>
             <h2>Termos e condições</h2>
@@ -28,5 +28,3 @@ function Terms() {
         </div >
     )
 }
-
-export default Terms
