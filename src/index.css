@@ -133,6 +133,10 @@ b {
   color: var(--highlight-color);
 }
 
+.green{
+  filter: invert(100%);
+}
+
 ul {
   list-style: none;
   padding: 0;
